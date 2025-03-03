@@ -15,11 +15,7 @@ class DashboardController extends Controller
         $title = 'CMS Portfolio Dashboard';
         $active = 'dashboard';
         $subActive = null;
-        $allCertificates = Certificates::all()->count();
-        $allSkill = Skills::all()->count();
-        $allProjects = Projects::all()->count();
-        $experience = experience::with('status')->take(5)->get();
-        $education = Educations::all();
-        return view('pages.dashboard', compact('title','allCertificates', 'allSkill','allProjects','experience','education','active', 'subActive'));
+     
+        return view('pages.dashboard', compact('title','active', 'subActive'));
     }
 }

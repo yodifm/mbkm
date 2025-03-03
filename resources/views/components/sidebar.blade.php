@@ -4,9 +4,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="w-100 d-flex">
                     <a href="{{ route('dashboard') }}">
-                        <img class="w-100 d-flex " style="height:50px !important;" src="{{ asset('nata-purple.svg') }}"
+                        <img class="w-100 d-flex " style="height:50px !important;" src="{{ asset('logo_kampus.png') }}"
                             alt="Logo" srcset="">
-                        <h1 style="font-size: 20px">syrsdev</h1>
+                        <h1 style="font-size: 20px"></h1>
                     </a>
                 </div>
                 <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
@@ -47,16 +47,58 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
+
                 <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }} ">
                     <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
+                        <span>Home</span>
                     </a>
 
 
                 </li>
 
-                <li class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
+                @if (auth()->user()->role == 'mahasiswa')
+                    
+                <li class="sidebar-item {{ $active == 'pemberkasans' ? 'active' : '' }} ">
+                    <a href="{{ route('pemberkasans.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Pemberkasan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ $active == 'datambkms' ? 'active' : '' }} ">
+                    <a href="{{ route('datambkms.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data MBKM</span>
+                    </a>
+                </li>
+
+                @endif
+                
+                @if (auth()->user()->role != 'mahasiswa')
+                <li class="sidebar-item {{ $active == 'datamahasiswas' ? 'active' : '' }} ">
+                    <a href="{{ route('datamahasiswas.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data Mahasiswa</span>
+                    </a>
+                </li>
+                    
+                @endif
+
+                @if (auth()->user()->role == 'admin')
+                    
+                <li class="sidebar-item {{ $active == 'datadosens' ? 'active' : '' }} ">
+                    <a href="{{ route('datadosens.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Data Dosen</span>
+                    </a>
+                </li>
+                @endif
+                
+                
+
+              
+
+                {{-- <li class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-person"></i>
                         <span>About </span>
@@ -123,7 +165,7 @@
                         <i class="bi bi-inboxes-fill"></i>
                         <span>Contact</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li class="sidebar-title">Logout</li> --}}
                 <form method="POST" action="{{ route('logout') }}" class="mt-3 sidebar-item w-100"

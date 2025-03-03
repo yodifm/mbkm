@@ -4,57 +4,57 @@ var world_map = new jsVectorMap({
     zoomOnScroll: false,
     regionStyle: {
         hover: {
-            fill: '#435ebe'
-        }
+            fill: "#34623F",
+        },
     },
     markers: [
         {
-            name: 'Indonesia',
+            name: "Indonesia",
             coords: [-6.229728, 106.6894311],
             style: {
-                fill: '#435ebe'
-            }
+                fill: "#34623F",
+            },
         },
         {
-            name: 'United States',
+            name: "United States",
             coords: [38.8936708, -77.1546604],
             style: {
-                fill: '#28ab55'
-            }
+                fill: "#28ab55",
+            },
         },
         {
-            name: 'Russia',
+            name: "Russia",
             coords: [55.5807481, 36.825129],
             style: {
-                fill: '#f3616d'
-            }
+                fill: "#f3616d",
+            },
         },
         {
-            name: 'China',
-            coords: [39.9385466, 116.1172735]
+            name: "China",
+            coords: [39.9385466, 116.1172735],
         },
         {
-            name: 'United Kingdom',
-            coords: [51.5285582, -0.2416812]
+            name: "United Kingdom",
+            coords: [51.5285582, -0.2416812],
         },
         {
-            name: 'India',
-            coords: [26.8851417, 75.6504721]
+            name: "India",
+            coords: [26.8851417, 75.6504721],
         },
         {
-            name: 'Australia',
-            coords: [-35.2813046, 149.124822]
+            name: "Australia",
+            coords: [-35.2813046, 149.124822],
         },
         {
-            name: 'Brazil',
-            coords: [-22.9140693, -43.5860681]
+            name: "Brazil",
+            coords: [-22.9140693, -43.5860681],
         },
         {
-            name: 'Egypt',
-            coords: [26.834955, 26.3823725]
+            name: "Egypt",
+            coords: [26.834955, 26.3823725],
         },
     ],
     onRegionTooltipShow(event, tooltip) {
-        tooltip.css({ backgroundColor: '#435ebe' })
-    }
+        tooltip.css({ backgroundColor: "#34623F" });
+    },
 });

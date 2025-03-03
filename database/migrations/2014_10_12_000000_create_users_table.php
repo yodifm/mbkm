@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('NIK')->unique();
             $table->string('password');
+            $table->enum('role', ['admin', 'mahasiswa', 'dosen']);
+
+            $table->enum('status', ['none', 'surat_rekomendasi', 'surat_PTJM', 'LoA', 'laporan_pertengahan', 'laporan_akhir', 'sertifikat_penilaian'])->default('none');
+
             $table->timestamps();
         });
     }

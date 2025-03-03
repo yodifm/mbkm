@@ -22,30 +22,26 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         User::create([
-            'name' => 'Surya Nata Ardhana',
-            'email' => 'surya.nata.aardhana@gmail.com',
+            'name' => 'Admin',
+            'NIK' => '202501',
             'password' => bcrypt('password'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Mahasiswa',
+            'NIK' => '202502',
+            'password' => bcrypt('password'),
+            'role' => 'mahasiswa'
+        ]);
+        User::create([
+            'name' => 'Dosen',
+            'NIK' => '202503',
+            'password' => bcrypt('password'),
+            'role' => 'dosen'
         ]);
 
-        Work_status::create(
-            [
-                'title' => 'Intership',
-            ],
-        );
-        Work_status::create(
-            [
-                'title' => 'Fulltime',
-            ],
-        );
-        Work_status::create(
-            [
-                'title' => 'Contact',
-            ],
-        );
-        Work_status::create(
-            [
-                'title' => 'Freelance',
-            ],
-        );
+
+       
+      
     }
 }
