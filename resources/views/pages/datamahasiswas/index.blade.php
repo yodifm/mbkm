@@ -13,17 +13,22 @@
                 <input type="text" class="form-control me-2" placeholder="NIM">
                 <button class="btn btn-success">Cari</button>
             </div>
+            <div class="mb-4 w-100 d-flex justify-content-end">
+                <a href="{{ route('datamahasiswas.create') }}" class="btn btn-primary ">Tambah Data Mahasiswa</a>
+            </div>
           
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-success">
                         <tr>
                             <th>No</th>
-                            <th>Nomor Induk</th>
-                            <th>Nama Lengkap</th>
-                            <th>Program MBKM</th>
+                            <th>NIK</th>
+                            <th>Name</th>
                             <th>Status</th>
-                            <th>Detail</th>
+                            <th>Action</th>
+                            
+                          
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -37,17 +42,16 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->NIK }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->program_mbkm }}</td>
+                                    <td>{{ $item->name }}</td>
+                                
                                     <td>
-                                        @if ($item->status == 'Sertifikat dan Penilaian')
-                                            <i class="bi bi-check-circle text-success"></i> {{ $item->status }}
-                                        @else
-                                            <i class="bi bi-exclamation-circle text-danger"></i> {{ $item->status }}
-                                        @endif
+                                        @include('components.actionbtn', [
+                                            'edit' => route('datamahasiswas.edit', $item->id),
+                                            'id' => $item->id,
+                                            'delete' => route('datamahasiswas.destroy', $item->id),
+                                        ])
                                     </td>
-                                    <td>
-                                        <a href="{{ route('datamahasiswas.show',  $item->NIK) }}" class="btn btn-primary ">Detail</a>
-                                    </td>
+                                
                                 </tr>
                             @endforeach
                         @endif

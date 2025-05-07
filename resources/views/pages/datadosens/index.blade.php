@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header bg-success text-white d-flex align-items-center">
             <img src={{ asset('histo.png') }} alt="Logo" style="width: 25px; height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <h5 class="mb-0" style="color: #fff">Data Dosen</h5>
+            <h5 class="mb-0" style="color: #fff">Data Dosen MBKM Program Studi Manajemen Pendidikan</h5>
         </div> <br/>
         <div class="card-body">
             <div class="mb-3 d-flex">
@@ -21,10 +21,12 @@
                     <thead class="table-success">
                         <tr>
                             <th>No</th>
-                            <th>Nomor Induk</th>
-                            <th>Nama Lengkap</th>
-                            <th>Program MBKM</th>
+                            <th>NIK</th>
+                            <th>Name</th>
                             <th>Status</th>
+                            <th>Action</th>
+                            
+                          
                          
                         </tr>
                     </thead>
@@ -39,13 +41,14 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->NIK }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->program_mbkm }}</td>
+                                    <td>{{ $item->name }}</td>
+                                
                                     <td>
-                                        @if ($item->status == 'Sertifikat dan Penilaian')
-                                            <i class="bi bi-check-circle text-success"></i> {{ $item->status }}
-                                        @else
-                                            <i class="bi bi-exclamation-circle text-danger"></i> {{ $item->status }}
-                                        @endif
+                                        @include('components.actionbtn', [
+                                            'edit' => route('datadosens.edit', $item->id),
+                                            'id' => $item->id,
+                                            'delete' => route('datadosens.destroy', $item->id),
+                                        ])
                                     </td>
                                 
                                 </tr>

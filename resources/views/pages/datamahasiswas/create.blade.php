@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('datambkms.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('datamahasiswas.store') }}" enctype="multipart/form-data">
                 @csrf
                 {{-- <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -24,28 +24,16 @@
                     <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
                 </div> --}}
                 <div class="mb-3">
-                    <label for="program_mbkm" class="form-label">Program MBKM</label>
-                    <input type="text" class="form-control" id="program_mbkm" name="program_mbkm">
+                    <label for="NIK" class="form-label">NIK</label>
+                    <input type="text" class="form-control" id="NIK" name="NIK">
                 </div>
                 <div class="mb-3">
-                    <label for="mitra_mbkm" class="form-label">Mitra MBKM</label>
-                    <input type="text" class="form-control" id="mitra_mbkm" name="mitra_mbkm">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
                 </div>
                 <div class="mb-3">
-                    <label for="posisi" class="form-label">Posisi</label>
-                    <input type="posisi" class="form-control" id="posisi" name="posisi">
-                </div>
-                <div class="mb-3">
-                    <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-                    <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
-                </div>
-                <div class="mb-3">
-                    <label for="tanggal_berakhir" class="form-label">Tanggal Berakhir</label>
-                    <input type="date" class="form-control" id="tanggal_berakhir" name="tanggal_berakhir">
-                </div>
-                <div class="mb-3">
-                    <label for="LoA" class="form-label">LoA</label>
-                    <input type="file" class="form-control" id="LoA" name="LoA">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="text" class="form-control" id="password" name="password">
                 </div>
                
                

@@ -42,7 +42,7 @@ class datadosensController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data MBKM';
+        $title = 'Add Data Dosen';
         $active = 'datadosens';
         $subActive = 'datadosens';
         return view('pages.datadosens.create', compact('title', 'active', 'subActive'));
@@ -55,12 +55,10 @@ class datadosensController extends Controller
     {
         $credential = $request->validate([
             
-            'program_mbkm' => 'required',
-            'mitra_mbkm' => 'required',
-            'posisi' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' => 'required',
-            'LoA' => 'required|mimes:pdf|max:2048',
+            'NIK' => 'required',
+            'name' => 'required',
+            'password' => 'required',
+            
             
         ]);
 
@@ -68,13 +66,13 @@ class datadosensController extends Controller
 
         // dd($credential['NIK']);
 
-        if ($request->hasFile('LoA')) {
-            $file = $request->file('LoA');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datadosens/LoA/', $filename);
-            $url = url('/files/datadosens/LoA/' . $filename);
-            $credential['LoA'] = $url;
-        }
+        // if ($request->hasFile('LoA')) {
+        //     $file = $request->file('LoA');
+        //     $filename = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('files/datadosens/LoA/', $filename);
+        //     $url = url('/files/datadosens/LoA/' . $filename);
+        //     $credential['LoA'] = $url;
+        // }
 
       
 
@@ -100,44 +98,40 @@ class datadosensController extends Controller
     {
         $credential = $request->validate([
             'NIK' => 'required',
-            'program_mbkm' => 'required',
-            'mitra_mbkm' => 'required',
-            'posisi' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' => 'required',
-            'LoA' => 'required|mimes:pdf|max:2048',
+            'name' => 'required',
+            'password' => 'required',
         ]);
 
-        $certificate = Datadosens::findOrFail($id);
+        // $certificate = Datadosens::findOrFail($id);
 
         
-        if ($request->hasFile('LoA')) {
-            // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
-                unlink('files/datadosens/' . basename($certificate->file));
-            }
+        // if ($request->hasFile('LoA')) {
+        //     // Delete the old file if it exists
+        //     if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
+        //         unlink('files/datadosens/' . basename($certificate->file));
+        //     }
 
-            $file = $request->file('surat_rekomendasi');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datadosens/', $filename);
-            $url = url('/files/datadosens/' . $filename);
-            $credential['surat_rekomendasi'] = $url;
-        }
+        //     $file = $request->file('surat_rekomendasi');
+        //     $filename = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('files/datadosens/', $filename);
+        //     $url = url('/files/datadosens/' . $filename);
+        //     $credential['surat_rekomendasi'] = $url;
+        // }
 
-        if ($request->hasFile('surat_pernyataan')) {
-            // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
-                unlink('files/datadosens/' . basename($certificate->file));
-            }
+        // if ($request->hasFile('surat_pernyataan')) {
+        //     // Delete the old file if it exists
+        //     if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
+        //         unlink('files/datadosens/' . basename($certificate->file));
+        //     }
 
-            $file = $request->file('surat_pernyataan');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datadosens/', $filename);
-            $url = url('/files/datadosens/' . $filename);
-            $credential['surat_pernyataan'] = $url;
-        }
+        //     $file = $request->file('surat_pernyataan');
+        //     $filename = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('files/datadosens/', $filename);
+        //     $url = url('/files/datadosens/' . $filename);
+        //     $credential['surat_pernyataan'] = $url;
+        // }
 
-        $certificate->update($credential);
+        // $certificate->update($credential);
 
         return redirect('/dashboard/datadosens')->with('success', 'Certificate updated successfully');
     }

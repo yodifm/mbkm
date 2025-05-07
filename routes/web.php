@@ -1,16 +1,9 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CertificatesController;
-use App\Http\Controllers\ContactController;
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DatambkmsController;
-use App\Http\Controllers\EducationController;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\ProjectSkillController;
-use App\Http\Controllers\SkillController;
-use App\Http\Controllers\WorkExperienceController;
-use App\Http\Controllers\WorkStatusController;
+
 use App\Http\Controllers\PemberkasansController;
 use App\Http\Controllers\DatambksController;
 use App\Http\Controllers\datamahasiswasController;
