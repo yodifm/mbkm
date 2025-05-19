@@ -10,19 +10,22 @@
                 @method('PUT')
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $data->user->name }}"
+                        disabled>
                 </div>
                 <div class="mb-3">
                     <label for="NIK" class="form-label">NIK</label>
-                    <input type="number" class="form-control" id="NIK" name="NIK">
+                    <input type="number" class="form-control" id="NIK" name="NIK" value="{{ $data->user->NIK }}"
+                        disabled>
                 </div>
                 <div class="mb-3">
                     <label for="semester" class="form-label">Semester</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
+                    <input type="text" class="form-control" id="semester" name="semester" value="{{ $data->semester }}">
                 </div>
                 <div class="mb-3">
                     <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
+                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing"
+                        value="{{ $data->dosen_pembimbing }}">
                 </div>
 
                 <div class="mb-3">
@@ -61,7 +64,8 @@
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-filter/filepond-plugin-image-filter.min.js') }}">
     </script>
-    <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
+    <script
+        src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}">
     </script>
