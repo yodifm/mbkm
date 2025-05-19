@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="surat_pernyataan" class="form-label">Surat Pernyataan</label>
+                    <label for="surat_pernyataan" class="form-label">Surat Pernyataan Tanggung Jawab Mutlak (SPTJM)</label>
                     <input type="file" class="basic-filepond" id="surat_pernyataan" name="surat_pernyataan">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

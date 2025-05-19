@@ -46,28 +46,28 @@ class PemberkasansController extends Controller
             'surat_rekomendasi' => 'required|mimes:pdf|max:2048',
             'surat_pernyataan' => 'required|mimes:pdf|max:2048',
         ]);
-        
+
         // Pastikan user sudah login sebelum mengakses Auth::user()
         if (!Auth::check()) {
             return redirect()->back()->with('error', 'Anda harus login terlebih dahulu.');
         }
-        
+
         $user = Auth::user(); // Ambil data user yang sedang login
-        
+
         // Pastikan NIK tersedia di dalam database
         $userData = User::where('NIK', $user->NIK)->first();
         if (!$userData) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
         }
-        
+
         // Update status user
         $userData->status = 'surat_rekomendasi';
         $userData->save();
-        
+
         // Tambahkan NIK_id ke dalam data yang akan disimpan
         $credential['NIK_id'] = $user->NIK;
-       
-        
+
+
         if ($request->hasFile('surat_rekomendasi')) {
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -75,7 +75,7 @@ class PemberkasansController extends Controller
             $url = url('/files/pemberkasans/surat_rekomendasi/' . $filename);
             $credential['surat_rekomendasi'] = $url;
         }
-        
+
         if ($request->hasFile('surat_pernyataan')) {
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -83,7 +83,7 @@ class PemberkasansController extends Controller
             $url = url('/files/pemberkasans/surat_pernyataan/' . $filename);
             $credential['surat_pernyataan'] = $url;
         }
-        
+
         Pemberkasans::create($credential);
         // $user->save();
         return redirect('/dashboard/pemberkasans')->with('success', 'pemberkasans created successfully');
@@ -94,9 +94,10 @@ class PemberkasansController extends Controller
     public function edit(string $id)
     {
         $title = 'Edit pemberkasans';
-        $data = Pemberkasans::find($id);
+        $data = Pemberkasans::with('user')->find($id);
         $active = 'pemberkasans';
         $subActive = 'pemberkasans';
+        // dd($data);
         return view('pages.pemberkasans.edit', compact('title', 'data', 'active', 'subActive'));
     }
 
@@ -116,7 +117,7 @@ class PemberkasansController extends Controller
 
         $certificate = Pemberkasans::findOrFail($id);
 
-        
+
         if ($request->hasFile('surat_rekomendasi')) {
             // Delete the old file if it exists
             if (basename($certificate->file) && file_exists('files/pemberkasans/' . basename($certificate->file))) {
