@@ -21,7 +21,12 @@ class PemberkasanController extends Controller
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
-        return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive'));
+
+        $user = auth()->user();
+        $pemberkasan = Pemberkasan::where('NIK_id', $user->NIK)->first();
+
+        $canAdd = $pemberkasan ? false : true;
+        return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive', 'canAdd'));
     }
 
     /**
@@ -61,7 +66,7 @@ class PemberkasanController extends Controller
         }
 
         // Update status user
-        $userData->status = 'surat_rekomendasi';
+        $userData->status = '1';
         $userData->save();
 
         // Tambahkan NIK_id ke dalam data yang akan disimpan
@@ -85,7 +90,6 @@ class PemberkasanController extends Controller
         }
 
         Pemberkasan::create($credential);
-        // $user->save();
         return redirect('/dashboard/pemberkasan')->with('success', 'pemberkasan created successfully');
     }
     /**

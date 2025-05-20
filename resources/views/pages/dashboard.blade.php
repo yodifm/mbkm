@@ -49,17 +49,29 @@
                                     style="display: flex; justify-content: space-between; align-items: right; padding: 20px;">
 
 
-                                    @if (auth()->user()->status != 'none')
-                                        <!-- Langkah 1 -->
-                                        <div class="step" style="text-align: left; flex: 1; position: relative;">
-                                            <div class="icon" style="color: #34623F; margin-bottom: 10px;">
-                                                <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 1)
+                                        @if ($status1 == 'approved')
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #34623F; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px; font">Langkah 1</p>
+                                                <p style="margin: 0; font-size: 14px;">Surat Rekomendasi</p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
                                             </div>
-                                            <p style="margin: 5px 0; font-size: 10px; font">Langkah 1</p>
-                                            <p style="margin: 0; font-size: 14px;">Surat Rekomendasi</p>
-                                            <button class="btn btn-success"
-                                                style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
-                                        </div>
+                                        @else
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #343662; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px; font">Langkah 1</p>
+                                                <p style="margin: 0; font-size: 14px;">Surat Rekomendasi</p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #959aff; color: #343662; border: none; margin-top: 5px;">in
+                                                    Review</button>
+                                            </div>
+                                        @endif
                                     @else
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #D3D3D3; margin-bottom: 10px;">
@@ -74,17 +86,29 @@
 
 
 
-                                    @if (auth()->user()->status != 'none' && (auth()->user()->status != 'surat_rekomendasi' ))
-                                         <!-- Langkah 2 -->
-                                        <div class="step" style="text-align: left; flex: 1; position: relative;">
-                                            <div class="icon" style="color: #34623F; margin-bottom: 10px;">
-                                                <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 1)
+                                        @if ($status2 == 'approved')
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #34623F; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px;">Langkah 2</p>
+                                                <p style="margin: 0; font-size: 14px;">Surat PTJM</p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
                                             </div>
-                                            <p style="margin: 5px 0; font-size: 10px;">Langkah 2</p>
-                                            <p style="margin: 0; font-size: 14px;">Surat PTJM</p>
-                                            <button class="btn btn-success"
-                                                style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
-                                        </div>
+                                        @else
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #343662; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px;">Langkah 2</p>
+                                                <p style="margin: 0; font-size: 14px;">Surat PTJM</p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #959aff; color: #343662; border: none; margin-top: 5px;">in
+                                                    Review</button>
+                                            </div>
+                                        @endif
                                     @else
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #D3D3D3; margin-bottom: 10px;">
@@ -98,17 +122,29 @@
                                     @endif
 
 
-                                    @if (auth()->user()->status != 'none' && (auth()->user()->status != 'surat_rekomendasi' && auth()->user()->status != 'surat_ptjm'))
-                                        <!-- Langkah 3 -->
-                                        <div class="step" style="text-align: left; flex: 1; position: relative;">
-                                            <div class="icon" style="color: #34623F; margin-bottom: 10px;">
-                                                <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 3)
+                                        @if ($status3 == 'approved')
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #34623F; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px;">Langkah 3</p>
+                                                <p style="margin: 0; font-size: 14px;"><em>Letter of Acceptance</em></p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
                                             </div>
-                                            <p style="margin: 5px 0; font-size: 10px;">Langkah 3</p>
-                                            <p style="margin: 0; font-size: 14px;"><em>Letter of Acceptance</em></p>
-                                            <button class="btn btn-success"
-                                                style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
-                                        </div>
+                                        @else
+                                            <div class="step" style="text-align: left; flex: 1; position: relative;">
+                                                <div class="icon" style="color: #343662; margin-bottom: 10px;">
+                                                    <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
+                                                </div>
+                                                <p style="margin: 5px 0; font-size: 10px;">Langkah 3</p>
+                                                <p style="margin: 0; font-size: 14px;">Letter of Acceptance</p>
+                                                <button class="btn btn-success"
+                                                    style="background-color: #959aff; color: #343662; border: none; margin-top: 5px;">in
+                                                    Review</button>
+                                            </div>
+                                        @endif
                                     @else
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #D3D3D3; margin-bottom: 10px;">
@@ -125,7 +161,7 @@
 
 
 
-                                    @if (auth()->user()->status != 'none' && (auth()->user()->status != 'surat_rekomendasi' && auth()->user()->status != 'surat_ptjm' && auth()->user()->status != 'LoA'))
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 4)
                                         <!-- Langkah 5 -->
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #34623F; margin-bottom: 10px;">
@@ -149,7 +185,7 @@
                                     @endif
 
 
-                                    @if (auth()->user()->status != 'none' && (auth()->user()->status != 'surat_rekomendasi' && auth()->user()->status != 'surat_ptjm' && auth()->user()->status != 'LoA' && auth()->user()->status != 'laporan_pertengahan'))
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 5)
                                         <!-- Langkah 5 -->
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #34623F; margin-bottom: 10px;">
@@ -158,7 +194,7 @@
                                             <p style="margin: 5px 0; font-size: 10px;">Langkah 5</p>
                                             <p style="margin: 0; font-size: 14px;">Laporan Akhir</p>
                                             <button class="btn btn-success"
-                                            style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
+                                                style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
                                         </div>
                                     @else
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
@@ -174,7 +210,7 @@
 
 
 
-                                    @if (auth()->user()->status != 'none' && (auth()->user()->status != 'surat_rekomendasi' && auth()->user()->status != 'surat_ptjm' && auth()->user()->status != 'LoA' && auth()->user()->status != 'laporan_pertengahan' && auth()->user()->status != 'laporan_akhir'))
+                                    @if (auth()->user()->status != 'none' && auth()->user()->status >= 6)
                                         <!-- Langkah 5 -->
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
                                             <div class="icon" style="color: #34623F; margin-bottom: 10px;">
@@ -183,7 +219,7 @@
                                             <p style="margin: 5px 0; font-size: 10px;">Langkah 6</p>
                                             <p style="margin: 0; font-size: 14px;">Sertifikat & Penilaian</p>
                                             <button class="btn btn-success"
-                                            style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
+                                                style="background-color: #D8EEC1; color: #34623F; border: none; margin-top: 5px;">Disetujui</button>
                                         </div>
                                     @else
                                         <div class="step" style="text-align: left; flex: 1; position: relative;">
@@ -278,11 +314,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h4>Educations</h4>
                     </div>
-                    {{-- <div class="pb-4 card-content">
+                    <div class="pb-4 card-content">
                         <div class="px-4 py-3">
                             @if ($education->count() == 0)
                                 <p>No Data</p>
@@ -299,8 +335,8 @@
                             <a href="{{ route('educations.create') }}"
                                 class='mt-3 font-bold btn btn-block btn-xl btn-outline-primary'>add education</a>
                         </div>
-                    </div> --}}
-                </div>
+                    </div>
+                </div> --}}
 
             </div>
         </section>

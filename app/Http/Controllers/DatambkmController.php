@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Datambkm;
+use App\Models\Pemberkasan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,14 @@ class DatambkmController extends Controller
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
-        return view('pages.datambkm.index', compact('title', 'data', 'active', 'subActive'));
+
+        $user = auth()->user();
+        $pemberkasan = Pemberkasan::where('NIK_id', $user->NIK)->first();
+        $mbkm = Datambkm::where('NIK_id', $user->NIK)->first();
+
+        $status2 = $pemberkasan ? $pemberkasan->status_surat_pernyataan : null;
+        $status3  = $mbkm ? $mbkm->status_LoA : null;
+        return view('pages.datambkm.index', compact('title', 'data', 'active', 'subActive', 'status2', 'status3'));
     }
 
     /**
@@ -50,7 +58,9 @@ class DatambkmController extends Controller
 
         ]);
 
-        $credential['NIK'] = Auth::user()->NIK;
+        $credential['NIK_id'] = Auth::user()->NIK;
+        $pemberkasan = Pemberkasan::where('NIK_id', Auth::user()->NIK)->first();
+        $credential['pemberkasan_id'] = $pemberkasan->id;
 
         // dd($credential['NIK']);
 
