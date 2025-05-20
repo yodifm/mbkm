@@ -58,116 +58,38 @@
                 </li>
 
                 @if (auth()->user()->role == 'mahasiswa')
-                    
-                <li class="sidebar-item {{ $active == 'pemberkasans' ? 'active' : '' }} ">
-                    <a href="{{ route('pemberkasans.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Pemberkasan</span>
-                    </a>
-                </li>
-                <li class="sidebar-item {{ $active == 'datambkms' ? 'active' : '' }} ">
-                    <a href="{{ route('datambkms.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Data MBKM</span>
-                    </a>
-                </li>
-
+                    <li class="sidebar-item {{ $active == 'pemberkasan' ? 'active' : '' }} ">
+                        <a href="{{ route('pemberkasan.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Pemberkasan</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {{ $active == 'datambkm' ? 'active' : '' }} ">
+                        <a href="{{ route('datambkm.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Data MBKM</span>
+                        </a>
+                    </li>
                 @endif
-                
+
                 @if (auth()->user()->role != 'mahasiswa')
-                <li class="sidebar-item {{ $active == 'datamahasiswas' ? 'active' : '' }} ">
-                    <a href="{{ route('datamahasiswas.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Data Mahasiswa</span>
-                    </a>
-                </li>
-                    
+                    <li class="sidebar-item {{ $active == 'datamahasiswas' ? 'active' : '' }} ">
+                        <a href="{{ route('datamahasiswas.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Data Mahasiswa</span>
+                        </a>
+                    </li>
                 @endif
 
                 @if (auth()->user()->role == 'admin')
-                    
-                <li class="sidebar-item {{ $active == 'datadosens' ? 'active' : '' }} ">
-                    <a href="{{ route('datadosens.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Data Dosen</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item {{ $active == 'datadosens' ? 'active' : '' }} ">
+                        <a href="{{ route('datadosens.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Data Dosen</span>
+                        </a>
+                    </li>
                 @endif
-                
-                
 
-              
-
-                {{-- <li class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-person"></i>
-                        <span>About </span>
-                    </a>
-
-                    <ul class="submenu ">
-
-                        <li class="submenu-item {{ $subActive == 'about' ? 'active' : '' }}">
-                            <a href="{{ route('about.index') }}" class="submenu-link">About me</a>
-                        </li>
-
-                        <li class="submenu-item {{ $subActive == 'educations' ? 'active' : '' }}">
-                            <a href="{{ route('educations.index') }}" class="submenu-link">Education</a>
-
-                        </li>
-
-                        <li class="submenu-item {{ $subActive == 'certificates' ? 'active' : '' }}">
-                            <a href="{{ route('certificates.index') }}" class="submenu-link">Certificate</a>
-
-                        </li>
-                    </ul>
-
-
-                </li>
-
-                <li class="sidebar-item has-sub {{ $active == 'work' ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Experience</span>
-                    </a>
-
-                    <ul class="submenu ">
-                        <li class="submenu-item {{ $subActive == 'experience' ? 'active' : '' }}">
-                            <a href="{{ route('WorkExperience.index') }}" class="submenu-link">Work Experience</a>
-                        </li>
-
-                        <li class="submenu-item {{ $subActive == 'status' ? 'active' : '' }}">
-                            <a href="{{ route('WorkStatus.index') }}" class="submenu-link">Work Status</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item has-sub {{ $active == 'portfolio' ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-rocket-takeoff"></i>
-                        <span>Portfolio</span>
-                    </a>
-
-                    <ul class="submenu ">
-
-                        <li class="submenu-item {{ $subActive == 'projects' ? 'active' : '' }}">
-                            <a href="{{ route('projects.index') }}" class="submenu-link">Projects</a>
-
-                        </li>
-
-                        <li class="submenu-item {{ $subActive == 'skills' ? 'active' : '' }}">
-                            <a href="{{ route('skills.index') }}" class="submenu-link">Skills</a>
-
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item {{ $active == 'contacts' ? 'active' : '' }}">
-                    <a href="{{ route('contacts.index') }}" class='sidebar-link'>
-                        <i class="bi bi-inboxes-fill"></i>
-                        <span>Contact</span>
-                    </a>
-                </li> --}}
-
-                {{-- <li class="sidebar-title">Logout</li> --}}
                 <form method="POST" action="{{ route('logout') }}" class="mt-3 sidebar-item w-100"
                     style="cursor: pointer">
                     @csrf

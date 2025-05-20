@@ -13,9 +13,9 @@ class datadosensController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $title = 'Data Dosen';
-        $data = User::where('role','dosen')->get();
+        $data = User::where('role', 'dosen')->get();
         $active = 'datadosens';
         $subActive = 'datadosens';
         $titleModal = 'Delete ' . $title;
@@ -26,7 +26,7 @@ class datadosensController extends Controller
 
 
     public function detail()
-    { 
+    {
         $title = 'Data Mahasiswa';
         $data = Datadosens::all();
         $active = 'datadosens';
@@ -54,12 +54,12 @@ class datadosensController extends Controller
     public function store(Request $request)
     {
         $credential = $request->validate([
-            
+
             'NIK' => 'required',
             'name' => 'required',
             'password' => 'required',
-            
-            
+
+
         ]);
 
         $credential['NIK'] = Auth::user()->NIK;
@@ -74,7 +74,7 @@ class datadosensController extends Controller
         //     $credential['LoA'] = $url;
         // }
 
-      
+
 
         datadosens::create($credential);
         return redirect('/dashboard/datadosens')->with('success', 'datadosens created successfully');
@@ -104,7 +104,7 @@ class datadosensController extends Controller
 
         // $certificate = Datadosens::findOrFail($id);
 
-        
+
         // if ($request->hasFile('LoA')) {
         //     // Delete the old file if it exists
         //     if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
@@ -142,10 +142,10 @@ class datadosensController extends Controller
     public function destroy(string $id)
     {
         $certificate = Datadosens::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasans/' . basename($certificate->image))) {
-            unlink('images/pemberkasans/' . basename($certificate->image));
+        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
+            unlink('images/pemberkasan/' . basename($certificate->image));
         }
         $certificate->delete();
-        return redirect('/dashboard/pemberkasans')->with('success', 'Certificate deleted successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
     }
 }

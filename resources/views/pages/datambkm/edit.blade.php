@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('pemberkasans.update', $data->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('pemberkasan.update', $data->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

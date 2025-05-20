@@ -13,9 +13,9 @@ class datamahasiswasController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $title = 'Data Mahasiswa';
-        $data = User::where('role','mahasiswa')->get();
+        $data = User::where('role', 'mahasiswa')->get();
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;
@@ -26,15 +26,15 @@ class datamahasiswasController extends Controller
 
 
     public function show($id)
-    { 
+    {
         $title = 'Data Mahasiswa';
-        $data = User::where('NIK',$id)->first();
+        $data = User::where('NIK', $id)->first();
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
-        
+
         return view('pages.datamahasiswas.detail', compact('title', 'data', 'active', 'subActive'));
     }
 
@@ -55,14 +55,14 @@ class datamahasiswasController extends Controller
     public function store(Request $request)
     {
         $credential = $request->validate([
-            
+
             'program_mbkm' => 'required',
             'mitra_mbkm' => 'required',
             'posisi' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_berakhir' => 'required',
             'LoA' => 'required|mimes:pdf|max:2048',
-            
+
         ]);
 
         $credential['NIK'] = Auth::user()->NIK;
@@ -77,7 +77,7 @@ class datamahasiswasController extends Controller
             $credential['LoA'] = $url;
         }
 
-      
+
 
         datamahasiswas::create($credential);
         return redirect('/dashboard/datamahasiswas')->with('success', 'datamahasiswas created successfully');
@@ -88,7 +88,7 @@ class datamahasiswasController extends Controller
     public function edit(string $id)
     {
         $title = 'Edit Data MBKM';
-        $data = Datamahasiswas::find($id);
+        $data = User::find($id);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         return view('pages.datamahasiswas.edit', compact('title', 'data', 'active', 'subActive'));
@@ -111,7 +111,7 @@ class datamahasiswasController extends Controller
 
         $certificate = Datamahasiswas::findOrFail($id);
 
-        
+
         if ($request->hasFile('LoA')) {
             // Delete the old file if it exists
             if (basename($certificate->file) && file_exists('files/datamahasiswas/' . basename($certificate->file))) {
@@ -149,10 +149,10 @@ class datamahasiswasController extends Controller
     public function destroy(string $id)
     {
         $certificate = Datamahasiswas::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasans/' . basename($certificate->image))) {
-            unlink('images/pemberkasans/' . basename($certificate->image));
+        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
+            unlink('images/pemberkasan/' . basename($certificate->image));
         }
         $certificate->delete();
-        return redirect('/dashboard/pemberkasans')->with('success', 'Certificate deleted successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
     }
 }

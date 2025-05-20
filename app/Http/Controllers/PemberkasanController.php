@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pemberkasans;
+use App\Models\Pemberkasan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PemberkasansController extends Controller
+class PemberkasanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = 'Pemberkasans';
-        $data = Pemberkasans::with('user')->get();
-        $active = 'pemberkasans';
-        $subActive = 'pemberkasans';
+        $title = 'Pemberkasan';
+        $data = Pemberkasan::with('user')->get();
+        $active = 'pemberkasan';
+        $subActive = 'pemberkasan';
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
-        return view('pages.pemberkasans.index', compact('title', 'data', 'active', 'subActive'));
+        return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**
@@ -29,10 +29,10 @@ class PemberkasansController extends Controller
      */
     public function create()
     {
-        $title = 'Add pemberkasans';
-        $active = 'pemberkasans';
-        $subActive = 'pemberkasans';
-        return view('pages.pemberkasans.create', compact('title', 'active', 'subActive'));
+        $title = 'Add pemberkasan';
+        $active = 'pemberkasan';
+        $subActive = 'pemberkasan';
+        return view('pages.pemberkasan.create', compact('title', 'active', 'subActive'));
     }
 
     /**
@@ -71,34 +71,34 @@ class PemberkasansController extends Controller
         if ($request->hasFile('surat_rekomendasi')) {
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasans/surat_rekomendasi/', $filename);
-            $url = url('/files/pemberkasans/surat_rekomendasi/' . $filename);
+            $file->move('files/pemberkasan/surat_rekomendasi/', $filename);
+            $url = url('/files/pemberkasan/surat_rekomendasi/' . $filename);
             $credential['surat_rekomendasi'] = $url;
         }
 
         if ($request->hasFile('surat_pernyataan')) {
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasans/surat_pernyataan/', $filename);
-            $url = url('/files/pemberkasans/surat_pernyataan/' . $filename);
+            $file->move('files/pemberkasan/surat_pernyataan/', $filename);
+            $url = url('/files/pemberkasan/surat_pernyataan/' . $filename);
             $credential['surat_pernyataan'] = $url;
         }
 
-        Pemberkasans::create($credential);
+        Pemberkasan::create($credential);
         // $user->save();
-        return redirect('/dashboard/pemberkasans')->with('success', 'pemberkasans created successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'pemberkasan created successfully');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Edit pemberkasans';
-        $data = Pemberkasans::with('user')->find($id);
-        $active = 'pemberkasans';
-        $subActive = 'pemberkasans';
+        $title = 'Edit pemberkasan';
+        $data = Pemberkasan::with('user')->find($id);
+        $active = 'pemberkasan';
+        $subActive = 'pemberkasan';
         // dd($data);
-        return view('pages.pemberkasans.edit', compact('title', 'data', 'active', 'subActive'));
+        return view('pages.pemberkasan.edit', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**
@@ -115,38 +115,38 @@ class PemberkasansController extends Controller
             'surat_pernyataan' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $certificate = Pemberkasans::findOrFail($id);
+        $certificate = Pemberkasan::findOrFail($id);
 
 
         if ($request->hasFile('surat_rekomendasi')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/pemberkasans/' . basename($certificate->file))) {
-                unlink('files/pemberkasans/' . basename($certificate->file));
+            if (basename($certificate->file) && file_exists('files/pemberkasan/' . basename($certificate->file))) {
+                unlink('files/pemberkasan/' . basename($certificate->file));
             }
 
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasans/', $filename);
-            $url = url('/files/pemberkasans/' . $filename);
+            $file->move('files/pemberkasan/', $filename);
+            $url = url('/files/pemberkasan/' . $filename);
             $credential['surat_rekomendasi'] = $url;
         }
 
         if ($request->hasFile('surat_pernyataan')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/pemberkasans/' . basename($certificate->file))) {
-                unlink('files/pemberkasans/' . basename($certificate->file));
+            if (basename($certificate->file) && file_exists('files/pemberkasan/' . basename($certificate->file))) {
+                unlink('files/pemberkasan/' . basename($certificate->file));
             }
 
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasans/', $filename);
-            $url = url('/files/pemberkasans/' . $filename);
+            $file->move('files/pemberkasan/', $filename);
+            $url = url('/files/pemberkasan/' . $filename);
             $credential['surat_pernyataan'] = $url;
         }
 
         $certificate->update($credential);
 
-        return redirect('/dashboard/pemberkasans')->with('success', 'Certificate updated successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate updated successfully');
     }
 
     /**
@@ -154,11 +154,11 @@ class PemberkasansController extends Controller
      */
     public function destroy(string $id)
     {
-        $certificate = Pemberkasans::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasans/' . basename($certificate->image))) {
-            unlink('images/pemberkasans/' . basename($certificate->image));
+        $certificate = Pemberkasan::find($id);
+        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
+            unlink('images/pemberkasan/' . basename($certificate->image));
         }
         $certificate->delete();
-        return redirect('/dashboard/pemberkasans')->with('success', 'Certificate deleted successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
     }
 }

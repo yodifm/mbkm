@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Datambkms;
+use App\Models\Datambkm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DatambkmsController extends Controller
+class DatambkmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,13 @@ class DatambkmsController extends Controller
     public function index()
     {
         $title = 'Data MBKM';
-        $data = Datambkms::all();
-        $active = 'datambkms';
-        $subActive = 'datambkms';
+        $data = Datambkm::all();
+        $active = 'datambkm';
+        $subActive = 'datambkm';
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
-        return view('pages.datambkms.index', compact('title', 'data', 'active', 'subActive'));
+        return view('pages.datambkm.index', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**
@@ -29,9 +29,9 @@ class DatambkmsController extends Controller
     public function create()
     {
         $title = 'Add Data MBKM';
-        $active = 'datambkms';
-        $subActive = 'datambkms';
-        return view('pages.datambkms.create', compact('title', 'active', 'subActive'));
+        $active = 'datambkm';
+        $subActive = 'datambkm';
+        return view('pages.datambkm.create', compact('title', 'active', 'subActive'));
     }
 
     /**
@@ -40,14 +40,14 @@ class DatambkmsController extends Controller
     public function store(Request $request)
     {
         $credential = $request->validate([
-            
+
             'program_mbkm' => 'required',
             'mitra_mbkm' => 'required',
             'posisi' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_berakhir' => 'required',
             'LoA' => 'required|mimes:pdf|max:2048',
-            
+
         ]);
 
         $credential['NIK'] = Auth::user()->NIK;
@@ -57,15 +57,15 @@ class DatambkmsController extends Controller
         if ($request->hasFile('LoA')) {
             $file = $request->file('LoA');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datambkms/LoA/', $filename);
-            $url = url('/files/datambkms/LoA/' . $filename);
+            $file->move('files/datambkm/LoA/', $filename);
+            $url = url('/files/datambkm/LoA/' . $filename);
             $credential['LoA'] = $url;
         }
 
-      
 
-        datambkms::create($credential);
-        return redirect('/dashboard/datambkms')->with('success', 'datambkms created successfully');
+
+        datambkm::create($credential);
+        return redirect('/dashboard/datambkm')->with('success', 'datambkm created successfully');
     }
     /**
      * Show the form for editing the specified resource.
@@ -73,10 +73,10 @@ class DatambkmsController extends Controller
     public function edit(string $id)
     {
         $title = 'Edit Data MBKM';
-        $data = Datambkms::find($id);
-        $active = 'datambkms';
-        $subActive = 'datambkms';
-        return view('pages.datambkms.edit', compact('title', 'data', 'active', 'subActive'));
+        $data = Datambkm::find($id);
+        $active = 'datambkm';
+        $subActive = 'datambkm';
+        return view('pages.datambkm.edit', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**
@@ -94,38 +94,38 @@ class DatambkmsController extends Controller
             'LoA' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $certificate = Datambkms::findOrFail($id);
+        $certificate = Datambkm::findOrFail($id);
 
-        
+
         if ($request->hasFile('LoA')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datambkms/' . basename($certificate->file))) {
-                unlink('files/datambkms/' . basename($certificate->file));
+            if (basename($certificate->file) && file_exists('files/datambkm/' . basename($certificate->file))) {
+                unlink('files/datambkm/' . basename($certificate->file));
             }
 
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datambkms/', $filename);
-            $url = url('/files/datambkms/' . $filename);
+            $file->move('files/datambkm/', $filename);
+            $url = url('/files/datambkm/' . $filename);
             $credential['surat_rekomendasi'] = $url;
         }
 
         if ($request->hasFile('surat_pernyataan')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datambkms/' . basename($certificate->file))) {
-                unlink('files/datambkms/' . basename($certificate->file));
+            if (basename($certificate->file) && file_exists('files/datambkm/' . basename($certificate->file))) {
+                unlink('files/datambkm/' . basename($certificate->file));
             }
 
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datambkms/', $filename);
-            $url = url('/files/datambkms/' . $filename);
+            $file->move('files/datambkm/', $filename);
+            $url = url('/files/datambkm/' . $filename);
             $credential['surat_pernyataan'] = $url;
         }
 
         $certificate->update($credential);
 
-        return redirect('/dashboard/datambkms')->with('success', 'Certificate updated successfully');
+        return redirect('/dashboard/datambkm')->with('success', 'Certificate updated successfully');
     }
 
     /**
@@ -133,11 +133,11 @@ class DatambkmsController extends Controller
      */
     public function destroy(string $id)
     {
-        $certificate = Datambkms::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasans/' . basename($certificate->image))) {
-            unlink('images/pemberkasans/' . basename($certificate->image));
+        $certificate = Datambkm::find($id);
+        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
+            unlink('images/pemberkasan/' . basename($certificate->image));
         }
         $certificate->delete();
-        return redirect('/dashboard/pemberkasans')->with('success', 'Certificate deleted successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
     }
 }

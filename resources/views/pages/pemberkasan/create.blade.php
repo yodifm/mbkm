@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('pemberkasans.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('pemberkasan.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>

@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('datambkms.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('datambkm.store') }}" enctype="multipart/form-data">
                 @csrf
                 {{-- <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -47,10 +47,10 @@
                     <label for="LoA" class="form-label">LoA</label>
                     <input type="file" class="form-control" id="LoA" name="LoA">
                 </div>
-               
-               
-                
-                
+
+
+
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

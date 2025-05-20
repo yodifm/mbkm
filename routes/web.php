@@ -2,8 +2,8 @@
 
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DatambkmsController;
-use App\Http\Controllers\PemberkasansController;
+use App\Http\Controllers\DatambkmController;
+use App\Http\Controllers\PemberkasanController;
 use App\Http\Controllers\datamahasiswasController;
 use App\Http\Controllers\datadosensController;
 use Illuminate\Support\Facades\Route;
@@ -23,14 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('/pemberkasans', PemberkasansController::class);
-        Route::resource('/datambkms', DatambkmsController::class);
+        Route::resource('/pemberkasan', PemberkasanController::class);
+        Route::resource('/datambkm', DatambkmController::class);
         Route::resource('/datamahasiswas', DatamahasiswasController::class);
         Route::resource('/datadosens', DatadosensController::class);
 
         Route::middleware(['checkrole:admin,mahasiswa'])->group(function () {
-            Route::resource('/pemberkasans', PemberkasansController::class);
-            Route::resource('/datambkms', DatambkmsController::class);
+            Route::resource('/pemberkasan', PemberkasanController::class);
+            Route::resource('/datambkm', DatambkmController::class);
             Route::resource('/datamahasiswas', DatamahasiswasController::class);
         });
 

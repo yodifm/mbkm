@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('datambkms', function (Blueprint $table) {
+        Schema::create('data_mbkm', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('NIK_id'); // Ensure it's unsigned
-        
-            // Ensure 'NIK' in 'users' is a primary/unique and unsigned field
+            $table->unsignedBigInteger('NIK_id'); 
             $table->foreign('NIK_id')->references('NIK')->on('users')->onDelete('cascade');
 
-            $table->foreignId('pemberkasans_id')->constrained('pemberkasans')->onDelete('cascade');
+            $table->foreignId('pemberkasan_id')->constrained('pemberkasan')->onDelete('cascade');
             $table->string('program_mbkm');
             $table->string('mitra_mbkm');
             $table->string('posisi');
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('datambkms');
+        Schema::dropIfExists('datambkm');
     }
 };
