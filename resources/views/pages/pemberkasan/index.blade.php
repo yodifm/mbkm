@@ -6,7 +6,8 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
-                <a href="{{ route('pemberkasan.create') }}" class="btn btn-primary ">Add Documents</a>
+                {!! $canAdd ? '<a href="' . route('pemberkasan.create') . '" class="btn btn-primary">Add Documents</a>' : '' !!}
+
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
@@ -50,7 +51,7 @@
                                         @include('components.actionbtn', [
                                             'edit' => route('pemberkasan.edit', $item->id),
                                             'id' => $item->id,
-                                            'delete' => route('pemberkasan.destroy', $item->id),
+                                            'delete' => null,
                                         ])
                                     </td>
                                 </tr>

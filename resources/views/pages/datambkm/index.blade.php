@@ -6,7 +6,10 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
-                <a href="{{ route('datambkm.create') }}" class="btn btn-primary ">Add Documents</a>
+                {!! $status2 == 'approved' && $status3 == null
+                    ? '<a href="' . route('datambkm.create') . ' " class="btn btn-primary ">Add Documents</a>'
+                    : '' !!}
+
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
@@ -45,7 +48,7 @@
                                     <td>{{ $item->mitra_mbkm }}</td>
                                     <td>{{ $item->posisi }}</td>
                                     <td>{{ $item->tanggal_mulai }}</td>
-                                    <td>{{ $item->tanggal_berakhri }}</td>
+                                    <td>{{ $item->tanggal_berakhir }}</td>
 
                                     <td>
                                         <a href="{{ asset($item->LoA) }}" download="{{ basename($item->LoA) }}"
@@ -56,7 +59,7 @@
                                         @include('components.actionbtn', [
                                             'edit' => route('datambkm.edit', $item->id),
                                             'id' => $item->id,
-                                            'delete' => route('datambkm.destroy', $item->id),
+                                            'delete' => null,
                                         ])
                                     </td>
                                 </tr>
