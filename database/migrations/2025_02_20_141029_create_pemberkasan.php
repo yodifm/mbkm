@@ -14,18 +14,21 @@ return new class extends Migration
         Schema::create('pemberkasan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('NIK_id'); // Ensure it's unsigned
-        
+
             // Ensure 'NIK' in 'users' is a primary/unique and unsigned field
             $table->foreign('NIK_id')->references('NIK')->on('users')->onDelete('cascade');
-        
+
             $table->integer('semester');
             $table->string('dosen_pembimbing');
             $table->string('surat_rekomendasi')->nullable();
+            $table->enum('status_surat_rekomendasi', ['pending', 'submited', 'approve'])->default('pending');
+
             $table->string('surat_pernyataan')->nullable();
-            
+            $table->enum('status_surat_pernyataan', ['pending', 'submited', 'approve'])->default('pending');
+
+
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -33,7 +36,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
+
         Schema::dropIfExists('pemberkasan');
     }
 };

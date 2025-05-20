@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('LoA');
+            $table->enum('status_LoA', ['pending', 'submited', 'approve'])->default('pending');
             $table->timestamps();
         });
     }
