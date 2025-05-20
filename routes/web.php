@@ -23,20 +23,16 @@ Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('/pemberkasan', PemberkasanController::class);
-        Route::resource('/datambkm', DatambkmController::class);
-        Route::resource('/datamahasiswas', DatamahasiswasController::class);
-        Route::resource('/datadosens', DatadosensController::class);
-
-        Route::middleware(['checkrole:admin,mahasiswa'])->group(function () {
+        Route::middleware(['checkrole:mahasiswa'])->group(function () {
             Route::resource('/pemberkasan', PemberkasanController::class);
             Route::resource('/datambkm', DatambkmController::class);
-            Route::resource('/datamahasiswas', DatamahasiswasController::class);
         });
 
         Route::middleware(['checkrole:admin,dosen'])->group(function () {
             Route::resource('/datamahasiswas', DatamahasiswasController::class);
-            Route::resource('/datadosens', DatadosensController::class);
+            Route::middleware(['checkrole:admin'])->group(function () {
+                Route::resource('/datadosens', DatadosensController::class);
+            });
         });
     });
 });
