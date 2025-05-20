@@ -1,8 +1,6 @@
 
 # SIP MBKM (Sistem Informasi Program Merdeka Belajar - Kampus Merdeka) Program Studi Manajemen Pendidikan FIP UNJ
 
-This repository was created to store the CMS code of the dynamic personal portfolio website
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
@@ -57,7 +55,7 @@ Database & App setup
 Start the server
 
 ```bash
-  php artisan serve --port=8081
+  php artisan serve
 
   open another terminal and run:
   npm run dev
