@@ -17,12 +17,12 @@ return new class extends Migration
             $table->foreign('NIK_id')->references('NIK')->on('users')->onDelete('cascade');
             $table->foreignId('data_mbkm_id')->constrained('data_mbkm')->onDelete('cascade');
             $table->string('laporan_pertengahan');
-            $table->enum('status_laporan_pertengahan', ['pending', 'submited', 'approve'])->default('pending');
+            $table->enum('status_laporan_pertengahan', ['submited', 'approved', 'reject'])->default('submited');
             $table->string('laporan_akhir');
-            $table->enum('status_laporan_akhir', ['pending', 'submited', 'approve'])->default('pending');
+            $table->enum('status_laporan_akhir', ['submited', 'approved', 'reject'])->default('submited');
             $table->string('sertifikat');
             $table->string('penilaian');
-            $table->enum('status_sertifikat_penilaian', ['pending', 'submited', 'approve'])->default('pending');
+            $table->enum('status_sertifikat_penilaian', ['submited', 'approved', 'reject'])->default('submited');
             $table->timestamps();
         });
     }

@@ -21,10 +21,10 @@ return new class extends Migration
             $table->integer('semester');
             $table->string('dosen_pembimbing');
             $table->string('surat_rekomendasi')->nullable();
-            $table->enum('status_surat_rekomendasi', ['pending', 'submited', 'approve'])->default('pending');
+            $table->enum('status_surat_rekomendasi', ['submited', 'approved', 'reject'])->default('submited');
 
             $table->string('surat_pernyataan')->nullable();
-            $table->enum('status_surat_pernyataan', ['pending', 'submited', 'approve'])->default('pending');
+            $table->enum('status_surat_pernyataan', ['submited', 'approved', 'reject'])->default('submited');
 
 
             $table->timestamps();
