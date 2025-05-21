@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Selamat datang, Soraya Nuron Jamil!</h4>
+                                <h4>Selamat datang, {{ Auth::user()->name }}  </h4>
                                 <p style="text-decoration: none">SIP MBKM (Sistem Informasi Program Merdeka Belajar - Kampus
                                     Merdeka) Program Studi Manajemen Pendidikan FIP UNJ, semoga dapat membantu pada setiap
                                     kegiatan administrasi MBKM anda.</p>
@@ -309,7 +309,7 @@
                             </div>
                             <div class="ms-3 name text-truncate">
                                 <h5 class="font-bold text-truncate">{{ Auth::user()->name }}</h5>
-                                <h6 class="mb-0 text-muted text-truncate">{{ Auth::user()->email }}</h6>
+                                {{-- <h6 class="mb-0 text-muted text-truncate">{{ Auth::user()->email }}</h6> --}}
                             </div>
                         </div>
                     </div>
