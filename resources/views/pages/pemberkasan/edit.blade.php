@@ -23,6 +23,10 @@
                     <input type="text" class="form-control" id="semester" name="semester" value="{{ $data->semester }}">
                 </div>
                 <div class="mb-3">
+                    <label for="angkatan" class="form-label">Angkatan</label>
+                    <input type="text" class="form-control" id="angkatan" name="angkatan" value="{{ $data->angkatan }}">
+                </div>
+                <div class="mb-3">
                     <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
                     <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing"
                         value="{{ $data->dosen_pembimbing }}">

@@ -47,6 +47,7 @@ class PemberkasanController extends Controller
     {
         $credential = $request->validate([
             'semester' => 'required',
+            'angkatan' => 'required',
             'dosen_pembimbing' => 'required',
             'surat_rekomendasi' => 'required|mimes:pdf|max:2048',
             'surat_pernyataan' => 'required|mimes:pdf|max:2048',
@@ -111,21 +112,20 @@ class PemberkasanController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'name' => 'required',
-            'NIM' => 'required',
             'semester' => 'required',
+            'angkatan' => 'required',
             'dosen_pembimbing' => 'required',
-            'surat_rekomendasi' => 'required|mimes:pdf|max:2048',
-            'surat_pernyataan' => 'required|mimes:pdf|max:2048',
+            'surat_rekomendasi' => 'mimes:pdf|max:2048',
+            'surat_pernyataan' => 'mimes:pdf|max:2048',
         ]);
 
-        $certificate = Pemberkasan::findOrFail($id);
+        $pemberkasan = Pemberkasan::findOrFail($id);
 
 
         if ($request->hasFile('surat_rekomendasi')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/pemberkasan/' . basename($certificate->file))) {
-                unlink('files/pemberkasan/' . basename($certificate->file));
+            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/' . basename($pemberkasan->file))) {
+                unlink('files/pemberkasan/' . basename($pemberkasan->file));
             }
 
             $file = $request->file('surat_rekomendasi');
@@ -137,8 +137,8 @@ class PemberkasanController extends Controller
 
         if ($request->hasFile('surat_pernyataan')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/pemberkasan/' . basename($certificate->file))) {
-                unlink('files/pemberkasan/' . basename($certificate->file));
+            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/' . basename($pemberkasan->file))) {
+                unlink('files/pemberkasan/' . basename($pemberkasan->file));
             }
 
             $file = $request->file('surat_pernyataan');
@@ -148,9 +148,9 @@ class PemberkasanController extends Controller
             $credential['surat_pernyataan'] = $url;
         }
 
-        $certificate->update($credential);
+        $pemberkasan->update($credential);
 
-        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate updated successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan updated successfully');
     }
 
     /**
@@ -158,11 +158,11 @@ class PemberkasanController extends Controller
      */
     public function destroy(string $id)
     {
-        $certificate = Pemberkasan::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
-            unlink('images/pemberkasan/' . basename($certificate->image));
+        $pemberkasan = Pemberkasan::find($id);
+        if (basename($pemberkasan->image) && file_exists('images/pemberkasan/' . basename($pemberkasan->image))) {
+            unlink('images/pemberkasan/' . basename($pemberkasan->image));
         }
-        $certificate->delete();
-        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
+        $pemberkasan->delete();
+        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan deleted successfully');
     }
 }

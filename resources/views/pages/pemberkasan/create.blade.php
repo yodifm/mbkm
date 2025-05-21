@@ -22,6 +22,10 @@
                     <input type="text" class="form-control" id="semester" name="semester">
                 </div>
                 <div class="mb-3">
+                    <label for="angkatan" class="form-label">Angkatan</label>
+                    <input type="text" class="form-control" id="angkatan" name="angkatan">
+                </div>
+                <div class="mb-3">
                     <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
                     <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
                 </div>

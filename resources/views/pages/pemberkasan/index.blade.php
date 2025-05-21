@@ -17,6 +17,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Semester</th>
+                            <th scope="col">Angkatan</th>
                             <th scope="col">Dosen Pembimbing</th>
                             <th scope="col">Dokumen Surat Rekomendasi</th>
                             <th scope="col">Dokumen Surat Pernyataan Tanggung Jawab Mutlak (SPTJM)</th>
@@ -36,6 +37,7 @@
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->user->NIM }}</td>
                                     <td>{{ $item->semester }}</td>
+                                    <td>{{ $item->angkatan }}</td>
                                     <td>{{ $item->dosen_pembimbing }}</td>
                                     <td>
                                         <a href="{{ asset($item->surat_rekomendasi) }}"
