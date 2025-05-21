@@ -23,19 +23,19 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::create([
             'name' => 'Admin',
-            'NIK' => '202501',
+            'NIM' => '202501',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
         User::create([
             'name' => 'Mahasiswa',
-            'NIK' => '202502',
+            'NIM' => '202502',
             'password' => bcrypt('password'),
             'role' => 'mahasiswa'
         ]);
         User::create([
             'name' => 'Dosen',
-            'NIK' => '202503',
+            'NIM' => '202503',
             'password' => bcrypt('password'),
             'role' => 'dosen'
         ]);

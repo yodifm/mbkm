@@ -55,16 +55,16 @@ class datadosensController extends Controller
     {
         $credential = $request->validate([
 
-            'NIK' => 'required',
+            'NIM' => 'required',
             'name' => 'required',
             'password' => 'required',
 
 
         ]);
 
-        $credential['NIK'] = Auth::user()->NIK;
+        $credential['NIM'] = Auth::user()->NIM;
 
-        // dd($credential['NIK']);
+        // dd($credential['NIM']);
 
         // if ($request->hasFile('LoA')) {
         //     $file = $request->file('LoA');
@@ -97,7 +97,7 @@ class datadosensController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'NIK' => 'required',
+            'NIM' => 'required',
             'name' => 'required',
             'password' => 'required',
         ]);

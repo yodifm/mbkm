@@ -14,8 +14,8 @@
                         disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="NIK" class="form-label">NIK</label>
-                    <input type="number" class="form-control" id="NIK" name="NIK" value="{{ $data->user->NIK }}"
+                    <label for="NIM" class="form-label">NIM</label>
+                    <input type="number" class="form-control" id="NIM" name="NIM" value="{{ $data->user->NIM }}"
                         disabled>
                 </div>
                 <div class="mb-3">

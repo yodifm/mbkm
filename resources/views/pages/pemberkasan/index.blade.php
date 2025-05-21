@@ -15,7 +15,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">NIK</th>
+                            <th scope="col">NIM</th>
                             <th scope="col">Semester</th>
                             <th scope="col">Dosen Pembimbing</th>
                             <th scope="col">Dokumen Surat Rekomendasi</th>
@@ -34,7 +34,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->user->NIK }}</td>
+                                    <td>{{ $item->user->NIM }}</td>
                                     <td>{{ $item->semester }}</td>
                                     <td>{{ $item->dosen_pembimbing }}</td>
                                     <td>

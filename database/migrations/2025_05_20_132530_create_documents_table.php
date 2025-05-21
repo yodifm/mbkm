@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('NIK_id');
-            $table->foreign('NIK_id')->references('NIK')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('NIM_id');
+            $table->foreign('NIM_id')->references('NIM')->on('users')->onDelete('cascade');
             $table->foreignId('data_mbkm_id')->constrained('data_mbkm')->onDelete('cascade');
             $table->string('laporan_pertengahan');
             $table->enum('status_laporan_pertengahan', ['submited', 'approved', 'reject'])->default('submited');

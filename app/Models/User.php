@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'NIK',
+        'NIM',
         'password',
     ];
 
@@ -45,10 +45,10 @@ class User extends Authenticatable
 
     public function pemberkasan()
     {
-        return $this->hasOne(Pemberkasan::class, 'NIK_id', 'NIK');
+        return $this->hasOne(Pemberkasan::class, 'NIM_id', 'NIM');
     }
     public function mbkm()
     {
-        return $this->hasOne(Datambkm::class, 'NIK_id', 'NIK');
+        return $this->hasOne(Datambkm::class, 'NIM_id', 'NIM');
     }
 }

@@ -14,6 +14,6 @@ class Pemberkasan extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'NIK_id', 'NIK');
+        return $this->belongsTo(User::class, 'NIM_id', 'NIM');
     }
 }

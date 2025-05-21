@@ -23,8 +23,8 @@ class DatambkmController extends Controller
         confirmDelete($titleModal, $text);
 
         $user = auth()->user();
-        $pemberkasan = Pemberkasan::where('NIK_id', $user->NIK)->first();
-        $mbkm = Datambkm::where('NIK_id', $user->NIK)->first();
+        $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
+        $mbkm = Datambkm::where('NIM_id', $user->NIM)->first();
 
         $status2 = $pemberkasan ? $pemberkasan->status_surat_pernyataan : null;
         $status3  = $mbkm ? $mbkm->status_LoA : null;
@@ -58,11 +58,11 @@ class DatambkmController extends Controller
 
         ]);
 
-        $credential['NIK_id'] = Auth::user()->NIK;
-        $pemberkasan = Pemberkasan::where('NIK_id', Auth::user()->NIK)->first();
+        $credential['NIM_id'] = Auth::user()->NIM;
+        $pemberkasan = Pemberkasan::where('NIM_id', Auth::user()->NIM)->first();
         $credential['pemberkasan_id'] = $pemberkasan->id;
 
-        // dd($credential['NIK']);
+        // dd($credential['NIM']);
 
         if ($request->hasFile('LoA')) {
             $file = $request->file('LoA');
@@ -95,7 +95,7 @@ class DatambkmController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'NIK' => 'required',
+            'NIM' => 'required',
             'program_mbkm' => 'required',
             'mitra_mbkm' => 'required',
             'posisi' => 'required',

@@ -21,9 +21,9 @@ class DashboardController extends Controller
         $subActive = null;
 
         $user = auth()->user();
-        $pemberkasan = Pemberkasan::where('NIK_id', $user->NIK)->first();
-        $mbkm = Datambkm::where('NIK_id', $user->NIK)->first();
-        $documents = Documents::where('NIK_id', $user->NIK)->first();
+        $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
+        $mbkm = Datambkm::where('NIM_id', $user->NIM)->first();
+        $documents = Documents::where('NIM_id', $user->NIM)->first();
 
         $status1 = $pemberkasan ? $pemberkasan->status_surat_rekomendasi : null;
         $status2 = $pemberkasan ? $pemberkasan->status_surat_pernyataan : null;

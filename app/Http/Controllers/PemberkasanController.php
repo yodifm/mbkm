@@ -23,7 +23,7 @@ class PemberkasanController extends Controller
         confirmDelete($titleModal, $text);
 
         $user = auth()->user();
-        $pemberkasan = Pemberkasan::where('NIK_id', $user->NIK)->first();
+        $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
 
         $canAdd = $pemberkasan ? false : true;
         return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive', 'canAdd'));
@@ -59,8 +59,8 @@ class PemberkasanController extends Controller
 
         $user = Auth::user(); // Ambil data user yang sedang login
 
-        // Pastikan NIK tersedia di dalam database
-        $userData = User::where('NIK', $user->NIK)->first();
+        // Pastikan NIM tersedia di dalam database
+        $userData = User::where('NIM', $user->NIM)->first();
         if (!$userData) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
         }
@@ -69,8 +69,8 @@ class PemberkasanController extends Controller
         $userData->status = '1';
         $userData->save();
 
-        // Tambahkan NIK_id ke dalam data yang akan disimpan
-        $credential['NIK_id'] = $user->NIK;
+        // Tambahkan NIM_id ke dalam data yang akan disimpan
+        $credential['NIM_id'] = $user->NIM;
 
 
         if ($request->hasFile('surat_rekomendasi')) {
@@ -112,7 +112,7 @@ class PemberkasanController extends Controller
     {
         $credential = $request->validate([
             'name' => 'required',
-            'NIK' => 'required',
+            'NIM' => 'required',
             'semester' => 'required',
             'dosen_pembimbing' => 'required',
             'surat_rekomendasi' => 'required|mimes:pdf|max:2048',

@@ -12,8 +12,8 @@
                     <input type="text" class="form-control" id="name" name="name">
                 </div> --}}
                 {{-- <div class="mb-3">
-                    <label for="NIK" class="form-label">NIK</label>
-                    <input type="number" class="form-control" id="NIK" name="NIK">
+                    <label for="NIM" class="form-label">NIM</label>
+                    <input type="number" class="form-control" id="NIM" name="NIM">
                 </div> --}}
                 {{-- <div class="mb-3">
                     <label for="semester" class="form-label">Semester</label>
@@ -24,8 +24,8 @@
                     <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
                 </div> --}}
                 <div class="mb-3">
-                    <label for="NIK" class="form-label">NIK</label>
-                    <input type="text" class="form-control" id="NIK" name="NIK">
+                    <label for="NIM" class="form-label">NIM</label>
+                    <input type="text" class="form-control" id="NIM" name="NIM">
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -35,11 +35,11 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="text" class="form-control" id="password" name="password">
                 </div>
-               
-               
-               
-                
-                
+
+
+
+
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

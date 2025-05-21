@@ -22,7 +22,7 @@
                     <thead class="table-success">
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
+                            <th>NIM</th>
                             <th>Name</th>
                             <th>Program MBKM</th>
                             <th>Status</th>
@@ -38,13 +38,13 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->NIK }}</td>
+                                    <td>{{ $item->NIM }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->mbkm?->program_mbkm }}</td>
                                     @include('components.status', ['status' => $item->status])
                                     <td>
                                         <a class="mb-2 w-100 btn btn-info me-2"
-                                            href="{{ route('datamahasiswas.show', $item->NIK) }}">Detail</a>
+                                            href="{{ route('datamahasiswas.show', $item->NIM) }}">Detail</a>
                                         @if (auth()->user()->role == 'admin')
                                             @include('components.actionbtn', [
                                                 'edit' => route('datamahasiswas.edit', $item->id),

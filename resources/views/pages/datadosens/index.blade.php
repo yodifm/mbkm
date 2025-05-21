@@ -7,7 +7,7 @@
         <div class="card-header bg-success text-white d-flex align-items-center">
             <img src={{ asset('histo.png') }} alt="Logo" style="width: 25px; height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <h5 class="mb-0" style="color: #fff">Data Dosen MBKM Program Studi Manajemen Pendidikan</h5>
-        </div> <br/>
+        </div> <br />
         <div class="card-body">
             <div class="mb-3 d-flex">
                 <input type="text" class="form-control me-2" placeholder="NIM">
@@ -21,13 +21,13 @@
                     <thead class="table-success">
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
+                            <th>NIM</th>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Action</th>
-                            
-                          
-                         
+
+
+
                         </tr>
                     </thead>
                     <tbody>
@@ -39,10 +39,10 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->NIK }}</td>
+                                    <td>{{ $item->NIM }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->name }}</td>
-                                
+
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('datadosens.edit', $item->id),
@@ -50,7 +50,7 @@
                                             'delete' => route('datadosens.destroy', $item->id),
                                         ])
                                     </td>
-                                
+
                                 </tr>
                             @endforeach
                         @endif

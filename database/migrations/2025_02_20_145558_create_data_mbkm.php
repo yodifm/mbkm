@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('data_mbkm', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('NIK_id'); 
-            $table->foreign('NIK_id')->references('NIK')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('NIM_id'); 
+            $table->foreign('NIM_id')->references('NIM')->on('users')->onDelete('cascade');
 
             $table->foreignId('pemberkasan_id')->constrained('pemberkasan')->onDelete('cascade');
             $table->string('program_mbkm');

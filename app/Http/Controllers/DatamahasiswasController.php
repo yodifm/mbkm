@@ -28,7 +28,7 @@ class datamahasiswasController extends Controller
     public function show($id)
     {
         $title = 'Data Mahasiswa';
-        $data = User::with(['mbkm', 'pemberkasan'])->where('NIK', $id)->first();
+        $data = User::with(['mbkm', 'pemberkasan'])->where('NIM', $id)->first();
         // dd($data->mbkm->mitra_mbkm);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
@@ -66,9 +66,9 @@ class datamahasiswasController extends Controller
 
         ]);
 
-        $credential['NIK'] = Auth::user()->NIK;
+        $credential['NIM'] = Auth::user()->NIM;
 
-        // dd($credential['NIK']);
+        // dd($credential['NIM']);
 
         if ($request->hasFile('LoA')) {
             $file = $request->file('LoA');
@@ -101,7 +101,7 @@ class datamahasiswasController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'NIK' => 'required',
+            'NIM' => 'required',
             'program_mbkm' => 'required',
             'mitra_mbkm' => 'required',
             'posisi' => 'required',
