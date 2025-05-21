@@ -12,11 +12,11 @@
             <div class="mt-3 row">
                 <div class="col-md-4">
                     <p><strong>Nama Lengkap</strong><br> {{ $data->name }}</p>
-                    <p><strong>Angkatan</strong><br> 2020</p>
+                    <p><strong>Angkatan</strong><br> {{ $data->pemberkasan?->angkatan }}</p>
                     <p><strong>Mitra MBKM</strong><br> {{ $data->mbkm?->mitra_mbkm }}</p>
                 </div>
                 <div class="col-md-4">
-                    <p><strong>Nomor Induk Mahasiswa</strong><br> 1103620048</p>
+                    <p><strong>Nomor Induk Mahasiswa</strong><br> {{ $data->NIM }}</p>
                     <p><strong>Dosen PA</strong><br> {{ $data->pemberkasan?->dosen_pembimbing }}</p>
                     <p><strong>Posisi</strong><br> {{ $data->mbkm?->posisi }}</p>
                 </div>
