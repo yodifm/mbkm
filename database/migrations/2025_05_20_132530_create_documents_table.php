@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('laporan_akhir');
             $table->enum('status_laporan_akhir', ['submited', 'approved', 'reject'])->default('submited');
             $table->string('sertifikat');
+            $table->enum('status_sertifikat', ['submited', 'approved', 'reject'])->default('submited');
             $table->string('penilaian');
-            $table->enum('status_sertifikat_penilaian', ['submited', 'approved', 'reject'])->default('submited');
+            $table->enum('status_penilaian', ['submited', 'approved', 'reject'])->default('submited');
             $table->timestamps();
         });
     }
