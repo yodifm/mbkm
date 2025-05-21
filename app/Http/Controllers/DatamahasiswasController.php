@@ -15,7 +15,7 @@ class datamahasiswasController extends Controller
     public function index()
     {
         $title = 'Data Mahasiswa';
-        $data = User::where('role', 'mahasiswa')->get();
+        $data = User::with('mbkm')->where('role', 'mahasiswa')->orderBy('updated_at', 'desc')->get();
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;
@@ -28,7 +28,8 @@ class datamahasiswasController extends Controller
     public function show($id)
     {
         $title = 'Data Mahasiswa';
-        $data = User::where('NIK', $id)->first();
+        $data = User::with(['mbkm', 'pemberkasan'])->where('NIK', $id)->first();
+        // dd($data->mbkm->mitra_mbkm);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;

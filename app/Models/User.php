@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function pemberkasan()
+    {
+        return $this->hasOne(Pemberkasan::class, 'NIK_id', 'NIK');
+    }
+    public function mbkm()
+    {
+        return $this->hasOne(Datambkm::class, 'NIK_id', 'NIK');
+    }
 }
