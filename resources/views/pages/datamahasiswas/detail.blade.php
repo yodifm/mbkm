@@ -4,41 +4,43 @@
     @include('components.pagetitle', ['title' => $title])
 
     {{-- Profile Section --}}
-    <div class="card mb-3">
+    <div class="mb-3 card">
         <div class="card-body">
-            <div class="d-inline-block bg-success text-white px-3 py-2 rounded">
+            <div class="px-3 py-2 text-white rounded d-inline-block bg-success">
                 <h5 class="mb-0" style="color: #fff">Profil</h5>
             </div>
-            <div class="row mt-3">
+            <div class="mt-3 row">
                 <div class="col-md-4">
-                    <p><strong>Nama Lengkap</strong><br> Soraya Nuron Jamil</p>
+                    <p><strong>Nama Lengkap</strong><br> {{ $data->name }}</p>
                     <p><strong>Angkatan</strong><br> 2020</p>
-                    <p><strong>Mitra MBKM</strong><br> PT. Partner Impian Milennial</p>
+                    <p><strong>Mitra MBKM</strong><br> {{ $data->mbkm?->mitra_mbkm }}</p>
                 </div>
                 <div class="col-md-4">
                     <p><strong>Nomor Induk Mahasiswa</strong><br> 1103620048</p>
-                    <p><strong>Dosen PA</strong><br> Prof. Dr. Suryadi</p>
-                    <p><strong>Posisi</strong><br> Business Improvement Officer</p>
+                    <p><strong>Dosen PA</strong><br> {{ $data->pemberkasan?->dosen_pembimbing }}</p>
+                    <p><strong>Posisi</strong><br> {{ $data->mbkm?->posisi }}</p>
                 </div>
                 <div class="col-md-4">
-                    <p><strong>Semester</strong><br> Semester 7</p>
-                    <p><strong>Program MBKM</strong><br> Magang Bersertifikat</p>
+                    <p><strong>Semester</strong><br>
+                        {{ $data->pemberkasan ? 'Semester ' . $data->pemberkasan->semester : '-' }}
+                    </p>
+                    <p><strong>Program MBKM</strong><br> {{ $data->mbkm?->program_mbkm }}</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+
     {{-- Document Section --}}
-    <div class="card mb-3">
+    <div class="mb-3 card">
         <div class="card-body">
             <!-- Header Dokumen -->
-            <div class="d-inline-block px-3 py-2 rounded bg-success">
+            <div class="px-3 py-2 rounded d-inline-block bg-success">
                 <h5 class="mb-0" style="color: #fff">Dokumen</h5>
             </div>
-    
+
             <!-- Tabel -->
-            <div class="table-responsive mt-3">
+            <div class="mt-3 table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-success">
                         <tr>
@@ -160,7 +162,4 @@
             </div>
         </div>
     </div>
-    
-    
-    
 @endsection
