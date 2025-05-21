@@ -39,7 +39,7 @@
                         <div class="mb-4 form-group position-relative has-icon-left">
 
                             <input type="text" class="form-control form-control-xl"
-                                placeholder="Nomor Induk Mahasiswa" name="NIM" style="border-color:#000">
+                                placeholder="Nomor Induk Mahasiswa / NIP" name="NIM" style="border-color:#000">
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
