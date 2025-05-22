@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Datamahasiswas;
+use App\Models\Datambkm;
+use App\Models\Documents;
+use App\Models\Pemberkasan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,14 +32,25 @@ class datamahasiswasController extends Controller
     {
         $title = 'Data Mahasiswa';
         $data = User::with(['mbkm', 'pemberkasan'])->where('NIM', $id)->first();
-        // dd($data->mbkm->mitra_mbkm);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
 
-        return view('pages.datamahasiswas.detail', compact('title', 'data', 'active', 'subActive'));
+        // $user = auth()->user();
+        $pemberkasan = Pemberkasan::where('NIM_id', $data->NIM)->first();
+        $mbkm = Datambkm::where('NIM_id', $data->NIM)->first();
+        $documents = Documents::where('NIM_id', $data->NIM)->first();
+
+        $status1 = $pemberkasan;
+        $status2 = $pemberkasan;
+        $status3  = $mbkm;
+        $status4  = $documents;
+        $status5  = $documents;
+        $status6  = $documents;
+        $status7  = $documents;
+        return view('pages.datamahasiswas.detail', compact('title', 'data', 'active', 'subActive', 'status1', 'status2', 'status3', 'status4', 'status5', 'status6', 'status7'));
     }
 
     /**

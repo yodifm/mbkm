@@ -54,7 +54,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>01/06/2023</td>
+                            <td>{{ $status1 ? $status1->updated_at : '-' }}</td>
                             <td>Surat Rekomendasi</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -62,14 +62,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'rekomendasi',
+                                    'statusUser' => '1',
+                                    'user' => $data,
+                                    'status' => $status1 ? $status1->status_surat_rekomendasi : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>01/06/2023</td>
+                            <td>{{ $status2 ? $status2->updated_at : '-' }}</td>
                             <td>Surat Pernyataan Tanggung Jawab Mutlak</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -77,14 +82,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'pernyataan',
+                                    'statusUser' => '2',
+                                    'user' => $data,
+                                    'status' => $status2 ? $status2->status_surat_pernyataan : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>20/06/2023</td>
+                            <td>{{ $status3 ? $status3->updated_at : '-' }}</td>
                             <td><em>Letter of Acceptance</em></td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -92,14 +102,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'LoA',
+                                    'statusUser' => '3',
+                                    'user' => $data,
+                                    'status' => $status3 ? $status3->status_LoA : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>25/08/2023</td>
+                            <td>{{ $status4 ? $status4->updated_at : '-' }}</td>
                             <td>Laporan Pertengahan</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -107,14 +122,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'laporan_pertengahan',
+                                    'statusUser' => '4',
+                                    'user' => $data,
+                                    'status' => $status4 ? $status4->status_laporan_pertengahan : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>31/12/2023</td>
+                            <td>{{ $status5 ? $status5->updated_at : '-' }}</td>
                             <td>Laporan Akhir</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -122,14 +142,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'laporan_akhir',
+                                    'statusUser' => '5',
+                                    'user' => $data,
+                                    'status' => $status5 ? $status5->status_laporan_akhir : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td>20/01/2024</td>
+                            <td>{{ $status6 ? $status6->updated_at : '-' }}</td>
                             <td>Sertifikat</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -137,14 +162,19 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'sertifikat',
+                                    'statusUser' => '6',
+                                    'user' => $data,
+                                    'status' => $status6 ? $status6->status_sertifikat : null,
+                                ])
+
                             </td>
                         </tr>
                         <tr>
                             <td>7</td>
-                            <td>20/01/2024</td>
+                            <td>{{ $status7 ? $status7->updated_at : '-' }}</td>
                             <td>Penilaian</td>
                             <td class="text-center">
                                 <a href="#" target="_blank">
@@ -152,9 +182,13 @@
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-danger d-flex align-items-center">
-                                    Belum Disetujui <i class="bi bi-caret-down-fill ms-2"></i>
-                                </button>
+                                @include('components.approvalButton', [
+                                    'id' => $data->NIM,
+                                    'file' => 'penilaian',
+                                    'statusUser' => '6',
+                                    'user' => $data,
+                                    'status' => $status7 ? $status7->status_penilaian : null,
+                                ])
                             </td>
                         </tr>
                     </tbody>
