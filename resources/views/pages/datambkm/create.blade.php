@@ -7,22 +7,16 @@
         <div class="card-body">
             <form method="POST" action="{{ route('datambkm.store') }}" enctype="multipart/form-data">
                 @csrf
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="NIM" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="NIM" name="NIM">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="semester" class="form-label">Semester</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
-                </div> --}}
+                    <input type="text" class="form-control" id="name" name="name"
+                        value="{{ auth()->user()->name }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="NIM_id" class="form-label">NIM</label>
+                    <input type="number" class="form-control" id="NIM_id" name="NIM_id"
+                        value="{{ auth()->user()->NIM }}" disabled>
+                </div>
                 <div class="mb-3">
                     <label for="program_mbkm" class="form-label">Program MBKM</label>
                     <input type="text" class="form-control" id="program_mbkm" name="program_mbkm">
@@ -47,10 +41,6 @@
                     <label for="LoA" class="form-label">LoA</label>
                     <input type="file" class="form-control" id="LoA" name="LoA">
                 </div>
-
-
-
-
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -78,7 +68,8 @@
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-filter/filepond-plugin-image-filter.min.js') }}">
     </script>
-    <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
+    <script
+        src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}">
     </script>

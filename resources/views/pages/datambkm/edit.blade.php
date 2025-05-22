@@ -5,34 +5,46 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('pemberkasan.update', $data->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('datambkm.update', $data->id) }}" enctype="multipart/form-data" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name"
+                        value="{{ auth()->user()->name }}" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="NIM" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="NIM" name="NIM">
+                    <label for="NIM_id" class="form-label">NIM</label>
+                    <input type="number" class="form-control" id="NIM_id" name="NIM_id"
+                        value="{{ auth()->user()->NIM }}" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="semester" class="form-label">Semester</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
+                    <label for="program_mbkm" class="form-label">Program MBKM</label>
+                    <input type="text" class="form-control" id="program_mbkm" name="program_mbkm"
+                        value="{{ $data->program_mbkm }}">
                 </div>
                 <div class="mb-3">
-                    <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
+                    <label for="mitra_mbkm" class="form-label">Mitra MBKM</label>
+                    <input type="text" class="form-control" id="mitra_mbkm" name="mitra_mbkm"
+                        value="{{ $data->mitra_mbkm }}">
                 </div>
-
                 <div class="mb-3">
-                    <label for="surat_rekomendasi" class="form-label">Surat Rekomendasi</label>
-                    <input type="file" class="basic-filepond" id="surat_rekomendasi" name="surat_rekomendasi">
+                    <label for="posisi" class="form-label">Posisi</label>
+                    <input type="posisi" class="form-control" id="posisi" name="posisi" value="{{ $data->posisi }}">
                 </div>
-
                 <div class="mb-3">
-                    <label for="surat_pernyataan" class="form-label">Surat Pernyataan</label>
-                    <input type="file" class="basic-filepond" id="surat_pernyataan" name="surat_pernyataan">
+                    <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
+                    <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai"
+                        value="{{ $data->tanggal_mulai }}">
+                </div>
+                <div class="mb-3">
+                    <label for="tanggal_berakhir" class="form-label">Tanggal Berakhir</label>
+                    <input type="date" class="form-control" id="tanggal_berakhir" name="tanggal_berakhir"
+                        value="{{ $data->tanggal_berakhir }}">
+                </div>
+                <div class="mb-3">
+                    <label for="LoA" class="form-label">LoA</label>
+                    <input type="file" class="form-control" id="LoA" name="LoA">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -61,7 +73,8 @@
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-filter/filepond-plugin-image-filter.min.js') }}">
     </script>
-    <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
+    <script
+        src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}">
     </script>
