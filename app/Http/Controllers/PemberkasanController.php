@@ -15,7 +15,7 @@ class PemberkasanController extends Controller
     public function index()
     {
         $title = 'Pemberkasan';
-        $data = Pemberkasan::with('user')->get();
+        $data = Pemberkasan::with('user')->first();
         $active = 'pemberkasan';
         $subActive = 'pemberkasan';
         $titleModal = 'Delete ' . $title;
@@ -128,6 +128,9 @@ class PemberkasanController extends Controller
                 unlink('files/pemberkasan/' . basename($pemberkasan->file));
             }
 
+            $pemberkasan->status_surat_rekomendasi = 'submited';
+            $pemberkasan->save();
+
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('files/pemberkasan/', $filename);
@@ -140,6 +143,9 @@ class PemberkasanController extends Controller
             if (basename($pemberkasan->file) && file_exists('files/pemberkasan/' . basename($pemberkasan->file))) {
                 unlink('files/pemberkasan/' . basename($pemberkasan->file));
             }
+
+            $pemberkasan->status_surat_pernyataan = 'submited';
+            $pemberkasan->save();
 
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
