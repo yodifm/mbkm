@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('angkatan');
             $table->string('dosen_pembimbing');
             $table->string('surat_rekomendasi')->nullable();
-            $table->enum('status_surat_rekomendasi', ['submited', 'approved', 'reject'])->default('submited');
+            $table->enum('status_surat_rekomendasi', ['submited', 'approved', 'rejected'])->default('submited');
 
             $table->string('surat_pernyataan')->nullable();
-            $table->enum('status_surat_pernyataan', ['submited', 'approved', 'reject'])->default('submited');
+            $table->enum('status_surat_pernyataan', ['submited', 'approved', 'rejected'])->default('submited');
 
 
             $table->timestamps();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'mahasiswa', 'dosen']);
 
-            $table->enum('status', ['none', '1', '2', '3', '4', '5'])->default('none');
+            $table->enum('status', ['none', '1', '2', '3', '4', '5', '6'])->default('none');
 
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('data_mbkm', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('NIM_id'); 
+            $table->unsignedBigInteger('NIM_id');
             $table->foreign('NIM_id')->references('NIM')->on('users')->onDelete('cascade');
 
             $table->foreignId('pemberkasan_id')->constrained('pemberkasan')->onDelete('cascade');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('LoA');
-            $table->enum('status_LoA', ['submited', 'approved', 'reject'])->default('submited');
+            $table->enum('status_LoA', ['submited', 'approved', 'rejected'])->default('submited');
             $table->timestamps();
         });
     }
