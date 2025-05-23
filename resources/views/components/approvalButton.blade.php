@@ -5,8 +5,8 @@
             Rejected
         </button>
     @elseif ($status == 'approved')
-        <button {{ $statusUser < $user->status ? 'disabled' : '' }} class="btn btn-success dropdown-toggle" type="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+        <button disabled class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Approved
         </button>
     @elseif ($status == 'submited')

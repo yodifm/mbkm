@@ -185,7 +185,7 @@
                                 @include('components.approvalButton', [
                                     'id' => $data->NIM,
                                     'file' => 'penilaian',
-                                    'statusUser' => '6',
+                                    'statusUser' => '7',
                                     'user' => $data,
                                     'status' => $status7 ? $status7->status_penilaian : null,
                                 ])
