@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Datambkm::class, 'NIM_id', 'NIM');
     }
+
+    public function documents()
+    {
+        return $this->hasOne(Documents::class, 'NIM_id', 'NIM');
+    }
 }

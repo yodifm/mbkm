@@ -6,6 +6,9 @@ use App\Http\Controllers\DatambkmController;
 use App\Http\Controllers\PemberkasanController;
 use App\Http\Controllers\datamahasiswasController;
 use App\Http\Controllers\datadosensController;
+use App\Http\Controllers\Documents\LaporanAkhirController;
+use App\Http\Controllers\Documents\LaporanPertengahanController;
+use App\Http\Controllers\Documents\SertifikatPenilaianController;
 use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +30,12 @@ Route::middleware('auth')->group(function () {
         Route::middleware(['checkrole:mahasiswa'])->group(function () {
             Route::resource('/pemberkasan', PemberkasanController::class);
             Route::resource('/datambkm', DatambkmController::class);
+
+            Route::prefix('/documents')->group(function () {
+                Route::resource('/laporan-pertengahan', LaporanPertengahanController::class);
+                Route::resource('/laporan-akhir', LaporanAkhirController::class);
+                Route::resource('/sertifikat', SertifikatPenilaianController::class);
+            });
         });
 
         Route::middleware(['checkrole:admin,dosen'])->group(function () {

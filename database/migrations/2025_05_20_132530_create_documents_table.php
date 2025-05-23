@@ -16,14 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('NIM_id');
             $table->foreign('NIM_id')->references('NIM')->on('users')->onDelete('cascade');
             $table->foreignId('data_mbkm_id')->constrained('data_mbkm')->onDelete('cascade');
-            $table->string('laporan_pertengahan');
-            $table->enum('status_laporan_pertengahan', ['submited', 'approved', 'rejected'])->default('submited');
-            $table->string('laporan_akhir');
-            $table->enum('status_laporan_akhir', ['submited', 'approved', 'rejected'])->default('submited');
-            $table->string('sertifikat');
-            $table->enum('status_sertifikat', ['submited', 'approved', 'rejected'])->default('submited');
-            $table->string('penilaian');
-            $table->enum('status_penilaian', ['submited', 'approved', 'rejected'])->default('submited');
+            $table->string('laporan_pertengahan')->nullable();
+            $table->enum('status_laporan_pertengahan', ['pending', 'submited', 'approved', 'rejected'])->default('pending');
+            $table->string('laporan_akhir')->nullable();
+            $table->enum('status_laporan_akhir', ['pending', 'submited', 'approved', 'rejected'])->default('pending');
+            $table->string('sertifikat')->nullable();
+            $table->enum('status_sertifikat', ['pending', 'submited', 'approved', 'rejected'])->default('pending');
+            $table->string('penilaian')->nullable();
+            $table->enum('status_penilaian', ['pending', 'submited', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
