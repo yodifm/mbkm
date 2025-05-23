@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Datambkm;
+use App\Models\Documents;
 use App\Models\Pemberkasan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -73,5 +74,92 @@ class StatusController extends Controller
         $mbkm->save();
 
         return redirect()->back()->with('success', 'Surat LoA di tolak');
+    }
+    public function approveLaporan_pertengahan($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+        $user = User::where('NIM', $id)->first();
+        $user->status = '5';
+        $user->save();
+
+        $documents->status_laporan_pertengahan = 'approved';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Laporan Pertengahan di approve');
+    }
+    public function rejectLaporan_pertengahan($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_laporan_pertengahan = 'rejected';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Laporan Pertengahan di tolak');
+    }
+    public function approveLaporan_akhir($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+        $user = User::where('NIM', $id)->first();
+        $user->status = '6';
+        $user->save();
+
+        $documents->status_laporan_akhir = 'approved';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Laporan akhir di approve');
+    }
+    public function rejectLaporan_akhir($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_laporan_akhir = 'rejected';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Laporan akhir di tolak');
+    }
+    public function approveSertifikat($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_sertifikat = 'approved';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Sertifikat di approve');
+    }
+    public function rejectSertifikat($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_sertifikat = 'rejected';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Sertifikat di tolak');
+    }
+
+    public function approvePenilaian($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_penilaian = 'approved';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Penilaian di approve');
+    }
+    public function rejectPenilaian($id)
+    {
+
+        $documents = Documents::where('NIM_id', $id)->first();
+
+        $documents->status_penilaian = 'rejected';
+        $documents->save();
+
+        return redirect()->back()->with('success', 'Penilaian di tolak');
     }
 }

@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
                 Route::patch('/pernyataan/{id}/reject', [StatusController::class, 'rejectPernyataan'])->name('status.rpernyataan');
                 Route::patch('/LoA/{id}/approv', [StatusController::class, 'approveLoA'])->name('status.aLoA');
                 Route::patch('/LoA/{id}/reject', [StatusController::class, 'rejectLoA'])->name('status.rLoA');
-                Route::patch('/laporan_pertengahan/{id}/approv', [StatusController::class, 'approvelaporan_pertengahan'])->name('status.alaporan_pertengahan');
+                Route::patch('/laporan_pertengahan/{id}/approv', [StatusController::class, 'approveLaporan_pertengahan'])->name('status.alaporan_pertengahan');
                 Route::patch('/laporan_pertengahan/{id}/reject', [StatusController::class, 'rejectLaporan_pertengahan'])->name('status.rlaporan_pertengahan');
                 Route::patch('/laporan_akhir/{id}/approv', [StatusController::class, 'approveLaporan_akhir'])->name('status.alaporan_akhir');
                 Route::patch('/laporan_akhir/{id}/reject', [StatusController::class, 'rejectLaporan_akhir'])->name('status.rlaporan_akhir');
