@@ -30,8 +30,9 @@ class DashboardController extends Controller
         $status3  = $mbkm ? $mbkm->status_LoA : null;
         $status4  = $documents ? $documents->status_laporan_pertengahan : null;
         $status5  = $documents ? $documents->status_laporan_akhir : null;
-        $status6  = $documents ? $documents->status_sertifikat_penilaian : null;
+        $status6  = $documents ? $documents->status_sertifikat : null;
+        $status7  = $documents ? $documents->status_penilaian : null;
 
-        return view('pages.dashboard', compact('title', 'active', 'subActive', 'status1', 'status2', 'status3', 'status4', 'status5', 'status6'));
+        return view('pages.dashboard', compact('title', 'active', 'subActive', 'status1', 'status2', 'status3', 'status4', 'status5', 'status6', 'status7'));
     }
 }

@@ -125,6 +125,9 @@ class StatusController extends Controller
     {
 
         $documents = Documents::where('NIM_id', $id)->first();
+        $user = User::where('NIM', $id)->first();
+        $user->status = '7';
+        $user->save();
 
         $documents->status_sertifikat = 'approved';
         $documents->save();
