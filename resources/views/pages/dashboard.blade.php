@@ -127,7 +127,7 @@
                                                 <button class="btn btn-success"
                                                     style="background-color: #fb9292; color: #a91c1c; border: none; margin-top: 5px;">Ditolak</button>
                                             </div>
-                                        @elseif($status1 == 'submited')
+                                        @elseif($status2 == 'submited')
                                             <div class="step" style="text-align: left; flex: 1; position: relative;">
                                                 <div class="icon" style="color: #343662; margin-bottom: 10px;">
                                                     <i class="bi bi-check-circle-fill" style="font-size: 36px;"></i>
