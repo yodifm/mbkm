@@ -2,6 +2,8 @@
     <td class="text-success">{{ $data }}</td>
 @elseif($data == 'rejected')
     <td class="text-danger">{{ $data }}</td>
-@else
+@elseif ($data == 'submited')
     <td class="text-secondary">in Review</td>
+@else
+    <td>-</td>
 @endif

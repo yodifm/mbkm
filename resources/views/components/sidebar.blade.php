@@ -60,13 +60,13 @@
                 @if (auth()->user()->role == 'mahasiswa')
                     <li class="sidebar-item {{ $active == 'pemberkasan' ? 'active' : '' }} ">
                         <a href="{{ route('pemberkasan.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                             <span>Pemberkasan</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ $active == 'datambkm' ? 'active' : '' }} ">
                         <a href="{{ route('datambkm.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Data MBKM</span>
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                 @if (auth()->user()->role != 'mahasiswa')
                     <li class="sidebar-item {{ $active == 'datamahasiswas' ? 'active' : '' }} ">
                         <a href="{{ route('datamahasiswas.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-person-circle"></i>
                             <span>Data Mahasiswa</span>
                         </a>
                     </li>
@@ -84,9 +84,36 @@
                 @if (auth()->user()->role == 'admin')
                     <li class="sidebar-item {{ $active == 'datadosens' ? 'active' : '' }} ">
                         <a href="{{ route('datadosens.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-person-circle"></i>
                             <span>Data Dosen</span>
                         </a>
+                    </li>
+                @endif
+
+                @if (auth()->user()->role == 'mahasiswa')
+                    <li class="sidebar-item has-sub  {{ $active == 'documents' ? 'active' : '' }}">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Dokumen Lainnya</span>
+                        </a>
+
+                        <ul class="submenu ">
+
+                            <li class="submenu-item {{ $subActive == 'laporanPertengahan' ? 'active' : '' }}">
+                                <a href="{{ route('laporan-pertengahan.index') }}" class="submenu-link">Laporan
+                                    Pertengahan</a>
+
+                            </li>
+
+                            <li class="submenu-item {{ $subActive == 'laporanAkhir' ? 'active' : '' }}">
+                                <a href="{{ route('laporan-akhir.index') }}" class="submenu-link">Laporan Akhir</a>
+                            </li>
+
+                            <li class="submenu-item {{ $subActive == 'sertifikatPenilaian' ? 'active' : '' }}">
+                                <a href="{{ route('sertifikat.index') }}" class="submenu-link">Sertifikat dan
+                                    Penilaian</a>
+                            </li>
+                        </ul>
                     </li>
                 @endif
 
