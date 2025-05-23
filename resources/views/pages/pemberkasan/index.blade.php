@@ -23,7 +23,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Dokumen Surat Pernyataan Tanggung Jawab Mutlak (SPTJM)</th>
                             <th scope="col">Status</th>
-                            @if ($data->status_surat_rekomendasi == 'rejected' || $data->status_surat_pernyataan == 'rejected')
+                            @if ($data?->status_surat_rekomendasi == 'rejected' || $data?->status_surat_pernyataan == 'rejected')
                                 <th scope="col">Revisi</th>
                             @endif
 
@@ -58,7 +58,7 @@
                                 @include('components.statusFile', [
                                     'data' => $data->status_surat_pernyataan,
                                 ])
-                                @if ($data->status_surat_rekomendasi == 'rejected' || $data->status_surat_pernyataan == 'rejected')
+                                @if ($data?->status_surat_rekomendasi == 'rejected' || $data?->status_surat_pernyataan == 'rejected')
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('pemberkasan.edit', $data->id),

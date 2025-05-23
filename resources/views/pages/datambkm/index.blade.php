@@ -25,7 +25,7 @@
                             <th scope="col">Tanggal Berakhir</th>
                             <th scope="col">LoA</th>
                             <th scope="col">Status</th>
-                            @if ($data->status_LoA == 'rejected')
+                            @if ($data?->status_LoA == 'rejected')
                                 <th scope="col">Revisi</th>
                             @endif
 
@@ -55,7 +55,7 @@
                                 @include('components.statusFile', [
                                     'data' => $data->status_LoA,
                                 ])
-                                @if ($data->status_LoA == 'rejected')
+                                @if ($data?->status_LoA == 'rejected')
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('datambkm.edit', $data->id),
