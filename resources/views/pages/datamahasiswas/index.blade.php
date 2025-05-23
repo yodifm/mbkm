@@ -13,9 +13,11 @@
                 <input type="text" class="form-control me-2" placeholder="NIM">
                 <button class="btn btn-success">Cari</button>
             </div>
-            <div class="mb-4 w-100 d-flex justify-content-end">
-                <a href="{{ route('datamahasiswas.create') }}" class="btn btn-primary ">Tambah Data Mahasiswa</a>
-            </div>
+            @if (auth()->user()->role == 'admin')
+                <div class="mb-4 w-100 d-flex justify-content-end">
+                    <a href="{{ route('datamahasiswas.create') }}" class="btn btn-primary ">Tambah Data Mahasiswa</a>
+                </div>
+            @endif
 
             <div class="table-responsive">
                 <table class="table table-bordered">
