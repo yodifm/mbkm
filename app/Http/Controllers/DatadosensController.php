@@ -28,7 +28,7 @@ class datadosensController extends Controller
     public function detail()
     {
         $title = 'Data Mahasiswa';
-        $data = Datadosens::all();
+        $data = user::all();
         $active = 'datadosens';
         $subActive = 'datadosens';
         $titleModal = 'Delete ' . $title;
@@ -76,7 +76,7 @@ class datadosensController extends Controller
 
 
 
-        datadosens::create($credential);
+        user::create($credential);
         return redirect('/dashboard/datadosens')->with('success', 'datadosens created successfully');
     }
     /**
@@ -85,7 +85,7 @@ class datadosensController extends Controller
     public function edit(string $id)
     {
         $title = 'Edit Data MBKM';
-        $data = Datadosens::find($id);
+        $data = user::find($id);
         $active = 'datadosens';
         $subActive = 'datadosens';
         return view('pages.datadosens.edit', compact('title', 'data', 'active', 'subActive'));
@@ -102,38 +102,8 @@ class datadosensController extends Controller
             'password' => 'required',
         ]);
 
-        // $certificate = Datadosens::findOrFail($id);
 
-
-        // if ($request->hasFile('LoA')) {
-        //     // Delete the old file if it exists
-        //     if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
-        //         unlink('files/datadosens/' . basename($certificate->file));
-        //     }
-
-        //     $file = $request->file('surat_rekomendasi');
-        //     $filename = time() . '.' . $file->getClientOriginalExtension();
-        //     $file->move('files/datadosens/', $filename);
-        //     $url = url('/files/datadosens/' . $filename);
-        //     $credential['surat_rekomendasi'] = $url;
-        // }
-
-        // if ($request->hasFile('surat_pernyataan')) {
-        //     // Delete the old file if it exists
-        //     if (basename($certificate->file) && file_exists('files/datadosens/' . basename($certificate->file))) {
-        //         unlink('files/datadosens/' . basename($certificate->file));
-        //     }
-
-        //     $file = $request->file('surat_pernyataan');
-        //     $filename = time() . '.' . $file->getClientOriginalExtension();
-        //     $file->move('files/datadosens/', $filename);
-        //     $url = url('/files/datadosens/' . $filename);
-        //     $credential['surat_pernyataan'] = $url;
-        // }
-
-        // $certificate->update($credential);
-
-        return redirect('/dashboard/datadosens')->with('success', 'Certificate updated successfully');
+        return redirect('/dashboard/datadosens')->with('success', 'Data dosen updated successfully');
     }
 
     /**
@@ -141,11 +111,8 @@ class datadosensController extends Controller
      */
     public function destroy(string $id)
     {
-        $certificate = Datadosens::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
-            unlink('images/pemberkasan/' . basename($certificate->image));
-        }
-        $certificate->delete();
-        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
+        $dosen = user::find($id);
+        $dosen->delete();
+        return redirect('/dashboard/datadosens')->with('success', 'Data dosen deleted successfully');
     }
 }

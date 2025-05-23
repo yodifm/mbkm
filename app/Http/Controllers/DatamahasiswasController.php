@@ -58,7 +58,7 @@ class datamahasiswasController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data MBKM';
+        $title = 'Add Data mahasiswa';
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         return view('pages.datamahasiswas.create', compact('title', 'active', 'subActive'));
@@ -82,19 +82,8 @@ class datamahasiswasController extends Controller
 
         $credential['NIM'] = Auth::user()->NIM;
 
-        // dd($credential['NIM']);
 
-        if ($request->hasFile('LoA')) {
-            $file = $request->file('LoA');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datamahasiswas/LoA/', $filename);
-            $url = url('/files/datamahasiswas/LoA/' . $filename);
-            $credential['LoA'] = $url;
-        }
-
-
-
-        datamahasiswas::create($credential);
+        user::create($credential);
         return redirect('/dashboard/datamahasiswas')->with('success', 'datamahasiswas created successfully');
     }
     /**
@@ -102,7 +91,7 @@ class datamahasiswasController extends Controller
      */
     public function edit(string $id)
     {
-        $title = 'Edit Data MBKM';
+        $title = 'Edit Data Mahasiswa';
         $data = User::find($id);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
@@ -124,13 +113,12 @@ class datamahasiswasController extends Controller
             'LoA' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $certificate = Datamahasiswas::findOrFail($id);
+        $mahasiswa = user::findOrFail($id);
 
 
         if ($request->hasFile('LoA')) {
-            // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datamahasiswas/' . basename($certificate->file))) {
-                unlink('files/datamahasiswas/' . basename($certificate->file));
+            if (basename($mahasiswa->file) && file_exists('files/datamahasiswas/' . basename($mahasiswa->file))) {
+                unlink('files/datamahasiswas/' . basename($mahasiswa->file));
             }
 
             $file = $request->file('surat_rekomendasi');
@@ -142,8 +130,8 @@ class datamahasiswasController extends Controller
 
         if ($request->hasFile('surat_pernyataan')) {
             // Delete the old file if it exists
-            if (basename($certificate->file) && file_exists('files/datamahasiswas/' . basename($certificate->file))) {
-                unlink('files/datamahasiswas/' . basename($certificate->file));
+            if (basename($mahasiswa->file) && file_exists('files/datamahasiswas/' . basename($mahasiswa->file))) {
+                unlink('files/datamahasiswas/' . basename($mahasiswa->file));
             }
 
             $file = $request->file('surat_pernyataan');
@@ -153,7 +141,7 @@ class datamahasiswasController extends Controller
             $credential['surat_pernyataan'] = $url;
         }
 
-        $certificate->update($credential);
+        $mahasiswa->update($credential);
 
         return redirect('/dashboard/datamahasiswas')->with('success', 'Certificate updated successfully');
     }
@@ -163,11 +151,8 @@ class datamahasiswasController extends Controller
      */
     public function destroy(string $id)
     {
-        $certificate = Datamahasiswas::find($id);
-        if (basename($certificate->image) && file_exists('images/pemberkasan/' . basename($certificate->image))) {
-            unlink('images/pemberkasan/' . basename($certificate->image));
-        }
-        $certificate->delete();
+        $mahasiswa = user::find($id);
+        $mahasiswa->delete();
         return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
     }
 }
