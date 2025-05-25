@@ -124,8 +124,8 @@ class PemberkasanController extends Controller
 
         if ($request->hasFile('surat_rekomendasi')) {
             // Delete the old file if it exists
-            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/' . basename($pemberkasan->file))) {
-                unlink('files/pemberkasan/' . basename($pemberkasan->file));
+            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/surat_rekomendasi/' . basename($pemberkasan->file))) {
+                unlink('files/pemberkasan/surat_rekomendasi/' . basename($pemberkasan->file));
             }
 
             $pemberkasan->status_surat_rekomendasi = 'submited';
@@ -133,15 +133,15 @@ class PemberkasanController extends Controller
 
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasan/', $filename);
-            $url = url('/files/pemberkasan/' . $filename);
+            $file->move('files/pemberkasan/surat_rekomendasi/', $filename);
+            $url = url('/files/pemberkasan/surat_rekomendasi/' . $filename);
             $credential['surat_rekomendasi'] = $url;
         }
 
         if ($request->hasFile('surat_pernyataan')) {
             // Delete the old file if it exists
-            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/' . basename($pemberkasan->file))) {
-                unlink('files/pemberkasan/' . basename($pemberkasan->file));
+            if (basename($pemberkasan->file) && file_exists('files/pemberkasan/surat_pernyataan/' . basename($pemberkasan->file))) {
+                unlink('files/pemberkasan/surat_pernyataan/' . basename($pemberkasan->file));
             }
 
             $pemberkasan->status_surat_pernyataan = 'submited';
@@ -149,8 +149,8 @@ class PemberkasanController extends Controller
 
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/pemberkasan/', $filename);
-            $url = url('/files/pemberkasan/' . $filename);
+            $file->move('files/pemberkasan/surat_pernyataan/', $filename);
+            $url = url('/files/pemberkasan/surat_pernyataan/' . $filename);
             $credential['surat_pernyataan'] = $url;
         }
 

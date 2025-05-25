@@ -107,8 +107,8 @@ class DatambkmController extends Controller
 
 
         if ($request->hasFile('LoA')) {
-            if (basename($data_mbkm->file) && file_exists('files/datambkm/' . basename($data_mbkm->file))) {
-                unlink('files/datambkm/' . basename($data_mbkm->file));
+            if (basename($data_mbkm->file) && file_exists('files/datambkm/LoA/' . basename($data_mbkm->file))) {
+                unlink('files/datambkm/LoA/' . basename($data_mbkm->file));
             }
 
             $data_mbkm->status_LoA = 'submited';
@@ -116,8 +116,8 @@ class DatambkmController extends Controller
 
             $file = $request->file('LoA');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datambkm/', $filename);
-            $url = url('/files/datambkm/' . $filename);
+            $file->move('files/datambkm/LoA/', $filename);
+            $url = url('/files/datambkm/LoA/' . $filename);
             $credential['LoA'] = $url;
         }
 
