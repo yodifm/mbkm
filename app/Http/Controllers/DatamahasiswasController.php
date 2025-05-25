@@ -31,7 +31,7 @@ class datamahasiswasController extends Controller
     public function show($id)
     {
         $title = 'Data Mahasiswa';
-        $data = User::with(['mbkm', 'pemberkasan'])->where('NIM', $id)->first();
+        $data = User::with(['mbkm', 'pemberkasan', 'documents'])->where('NIM', $id)->first();
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         $titleModal = 'Delete ' . $title;
