@@ -57,9 +57,14 @@
                             <td>{{ $status1 ? $status1->updated_at : '-' }}</td>
                             <td>Surat Rekomendasi</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status1)
+                                    <a href="{{ asset($status1->surat_rekomendasi) }}"
+                                        download="{{ basename($status1->surat_rekomendasi) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -77,9 +82,14 @@
                             <td>{{ $status2 ? $status2->updated_at : '-' }}</td>
                             <td>Surat Pernyataan Tanggung Jawab Mutlak</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status2)
+                                    <a href="{{ asset($status2->surat_pernyataan) }}"
+                                        download="{{ basename($status2->surat_pernyataan) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -97,9 +107,13 @@
                             <td>{{ $status3 ? $status3->updated_at : '-' }}</td>
                             <td><em>Letter of Acceptance</em></td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status3)
+                                    <a href="{{ asset($status3->LoA) }}" download="{{ basename($status3->LoA) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -117,9 +131,14 @@
                             <td>{{ $status4 ? $status4->updated_at : '-' }}</td>
                             <td>Laporan Pertengahan</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status4 && $status4->status_laporan_pertengahan != 'pending')
+                                    <a href="{{ asset($status4->laporan_pertengahan) }}"
+                                        download="{{ basename($status4->laporan_pertengahan) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -137,9 +156,14 @@
                             <td>{{ $status5 ? $status5->updated_at : '-' }}</td>
                             <td>Laporan Akhir</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status5 && $status5->status_laporan_akhir != 'pending')
+                                    <a href="{{ asset($status5->laporan_akhir) }}"
+                                        download="{{ basename($status5->laporan_akhir) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -157,9 +181,14 @@
                             <td>{{ $status6 ? $status6->updated_at : '-' }}</td>
                             <td>Sertifikat</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status6 && $status6->status_sertifikat != 'pending')
+                                    <a href="{{ asset($status6->sertifikat) }}"
+                                        download="{{ basename($status6->sertifikat) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -177,9 +206,14 @@
                             <td>{{ $status7 ? $status7->updated_at : '-' }}</td>
                             <td>Penilaian</td>
                             <td class="text-center">
-                                <a href="#" target="_blank">
-                                    <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
-                                </a>
+                                @if ($status7 && $status7->status_penilaian != 'pending')
+                                    <a href="{{ asset($status7->penilaian) }}"
+                                        download="{{ basename($status7->penilaian) }}">
+                                        <i class="bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                @else
+                                    <i class="cursor-not-allowed bi bi-file-earmark-text" style="font-size: 1.5rem;"></i>
+                                @endif
                             </td>
                             <td>
                                 @include('components.approvalButton', [
@@ -196,4 +230,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('style')
+    <style>
+        .cursor-not-allowed:hover {
+            cursor: not-allowed;
+        }
+    </style>
 @endsection
