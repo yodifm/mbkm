@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Documents;
 
 use App\Http\Controllers\Controller;
 use App\Models\Documents;
+use App\Models\RejectionReasons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SertifikatPenilaianController extends Controller
 {
@@ -26,7 +28,10 @@ class SertifikatPenilaianController extends Controller
         $status5 = $data ? $data->status_laporan_akhir : null;
         $status6 = $data ? $data->status_sertifikat : null;
         $status7 = $data ? $data->status_penilaian : null;
-        return view('pages.documents.sertifikatPenilaian.index', compact('title', 'data', 'active', 'subActive', 'status5', 'status6', 'status7'));
+
+        $reject1 = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'sertifikat')->first();
+        $reject2 = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'penilaian')->first();
+        return view('pages.documents.sertifikatPenilaian.index', compact('title', 'data', 'active', 'subActive', 'status5', 'status6', 'status7', 'reject1', 'reject2'));
     }
 
     /**
@@ -61,7 +66,11 @@ class SertifikatPenilaianController extends Controller
 
             $sertifikatPenilaian->status_sertifikat = 'submited';
             $sertifikatPenilaian->save();
-
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'sertifikat')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
             $file = $request->file('sertifikat');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('files/documents/sertifikat/', $filename);
@@ -76,6 +85,11 @@ class SertifikatPenilaianController extends Controller
 
             $sertifikatPenilaian->status_penilaian = 'submited';
             $sertifikatPenilaian->save();
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'penilaian')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
 
             $file = $request->file('penilaian');
             $filename = time() . '.' . $file->getClientOriginalExtension();
