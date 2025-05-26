@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Documents;
 
 use App\Http\Controllers\Controller;
 use App\Models\Documents;
+use App\Models\RejectionReasons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanAkhirController extends Controller
 {
@@ -22,10 +24,12 @@ class LaporanAkhirController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
 
+        $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'laporan_akhir')->first();
+
 
         $status4 = $data ? $data->status_laporan_pertengahan : null;
         $status5 = $data ? $data->status_laporan_akhir : null;
-        return view('pages.documents.laporanAkhir.index', compact('title', 'data', 'active', 'subActive', 'status5', 'status4'));
+        return view('pages.documents.laporanAkhir.index', compact('title', 'data', 'active', 'subActive', 'status5', 'status4', 'reject'));
     }
 
     /**
@@ -59,6 +63,11 @@ class LaporanAkhirController extends Controller
 
             $laporan_akhir->status_laporan_akhir = 'submited';
             $laporan_akhir->save();
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'laporan_akhir')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
 
             $file = $request->file('laporan_akhir');
             $filename = time() . '.' . $file->getClientOriginalExtension();
