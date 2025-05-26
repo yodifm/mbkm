@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Datambkm;
 use App\Models\Pemberkasan;
+use App\Models\RejectionReasons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,10 +26,11 @@ class DatambkmController extends Controller
         confirmDelete($titleModal, $text);
 
         $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
+        $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'LoA')->first();
 
         $status2 = $pemberkasan ? $pemberkasan->status_surat_pernyataan : null;
         $status3  = $data ? $data->status_LoA : null;
-        return view('pages.datambkm.index', compact('title', 'data', 'active', 'subActive', 'status2', 'status3'));
+        return view('pages.datambkm.index', compact('title', 'data', 'active', 'subActive', 'status2', 'status3', 'reject'));
     }
 
     /**
@@ -113,7 +115,11 @@ class DatambkmController extends Controller
 
             $data_mbkm->status_LoA = 'submited';
             $data_mbkm->save();
-
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'LoA')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
             $file = $request->file('LoA');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('files/datambkm/LoA/', $filename);
