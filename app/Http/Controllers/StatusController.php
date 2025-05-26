@@ -21,14 +21,7 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Surat Rekomendasi di approve');
     }
-    public function rejectRekomendasi($id)
-    {
-        $pemberkasan = Pemberkasan::where('NIM_id', $id)->first();
-        $pemberkasan->status_surat_rekomendasi = 'rejected';
-        $pemberkasan->save();
 
-        return redirect()->back()->with('success', 'Surat Rekomendasi di tolak');
-    }
     public function approvePernyataan($id)
     {
 
@@ -42,16 +35,7 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Surat Pernyataan di approve');
     }
-    public function rejectPernyataan($id)
-    {
 
-        $pemberkasan = Pemberkasan::where('NIM_id', $id)->first();
-
-        $pemberkasan->status_surat_pernyataan = 'rejected';
-        $pemberkasan->save();
-
-        return redirect()->back()->with('success', 'Surat Pernyataan di tolak');
-    }
     public function approveLoA($id)
     {
 
@@ -65,16 +49,7 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Surat LoA di approve');
     }
-    public function rejectLoA($id)
-    {
 
-        $mbkm = Datambkm::where('NIM_id', $id)->first();
-
-        $mbkm->status_LoA = 'rejected';
-        $mbkm->save();
-
-        return redirect()->back()->with('success', 'Surat LoA di tolak');
-    }
     public function approveLaporan_pertengahan($id)
     {
 
@@ -88,16 +63,7 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Laporan Pertengahan di approve');
     }
-    public function rejectLaporan_pertengahan($id)
-    {
 
-        $documents = Documents::where('NIM_id', $id)->first();
-
-        $documents->status_laporan_pertengahan = 'rejected';
-        $documents->save();
-
-        return redirect()->back()->with('success', 'Laporan Pertengahan di tolak');
-    }
     public function approveLaporan_akhir($id)
     {
 
@@ -111,16 +77,7 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Laporan akhir di approve');
     }
-    public function rejectLaporan_akhir($id)
-    {
 
-        $documents = Documents::where('NIM_id', $id)->first();
-
-        $documents->status_laporan_akhir = 'rejected';
-        $documents->save();
-
-        return redirect()->back()->with('success', 'Laporan akhir di tolak');
-    }
     public function approveSertifikat($id)
     {
 
@@ -134,16 +91,6 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Sertifikat di approve');
     }
-    public function rejectSertifikat($id)
-    {
-
-        $documents = Documents::where('NIM_id', $id)->first();
-
-        $documents->status_sertifikat = 'rejected';
-        $documents->save();
-
-        return redirect()->back()->with('success', 'Sertifikat di tolak');
-    }
 
     public function approvePenilaian($id)
     {
@@ -154,15 +101,5 @@ class StatusController extends Controller
         $documents->save();
 
         return redirect()->back()->with('success', 'Penilaian di approve');
-    }
-    public function rejectPenilaian($id)
-    {
-
-        $documents = Documents::where('NIM_id', $id)->first();
-
-        $documents->status_penilaian = 'rejected';
-        $documents->save();
-
-        return redirect()->back()->with('success', 'Penilaian di tolak');
     }
 }

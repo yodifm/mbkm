@@ -26,10 +26,19 @@
             @method('PATCH')
             <button type="submit" class="dropdown-item" href="#">Approve</button>
         </form>
-        <form method="POST" action="{{ route('status.r' . $file, $id) }}">
+        <button type="submit" class="dropdown-item" href="#" data-bs-toggle="modal"
+            data-bs-target="{{ '#rejectModal' . $statusUser }}">
+            Reject
+        </button>
+        {{-- <form method="POST" action="{{ route('status.r' . $file, $id) }}" class="modal-content">
             @csrf
             @method('PATCH')
-            <button type="submit" class="dropdown-item" href="#">Reject</button>
-        </form>
+        </form> --}}
     </ul>
 </div>
+
+@include('components.modal', [
+    'id' => $id,
+    'file' => $file,
+    'statusUser' => $statusUser,
+])
