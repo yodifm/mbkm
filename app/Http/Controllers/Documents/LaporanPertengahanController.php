@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Documents;
 use App\Http\Controllers\Controller;
 use App\Models\Datambkm;
 use App\Models\Documents;
+use App\Models\RejectionReasons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,11 +25,11 @@ class LaporanPertengahanController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
 
-
+        $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'laporan_pertengahan')->first();
         $mbkm = Datambkm::with('user')->where('NIM_id', $user->NIM)->first();
         $status3  = $mbkm ? $mbkm->status_LoA : null;
         $status4 = $data ? $data->status_laporan_pertengahan : null;
-        return view('pages.documents.laporanPertengahan.index', compact('title', 'data', 'active', 'subActive', 'status3', 'status4'));
+        return view('pages.documents.laporanPertengahan.index', compact('title', 'data', 'active', 'subActive', 'status3', 'status4', 'reject'));
     }
 
     /**
@@ -113,6 +114,11 @@ class LaporanPertengahanController extends Controller
 
             $laporan_pertengahan->status_laporan_pertengahan = 'submited';
             $laporan_pertengahan->save();
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'laporan_pertengahan')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
 
             $file = $request->file('laporan_pertengahan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
