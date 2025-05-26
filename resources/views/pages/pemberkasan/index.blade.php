@@ -74,4 +74,7 @@
             </div>
         </div>
     </div>
+    @include('components.rejectCard', ['reject' => $reject1])
+    @include('components.rejectCard', ['reject' => $reject2])
+
 @endsection

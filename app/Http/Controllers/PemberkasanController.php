@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pemberkasan;
+use App\Models\RejectionReasons;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,9 +25,11 @@ class PemberkasanController extends Controller
 
         $user = auth()->user();
         $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
+        $reject1 = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'rekomendasi')->first();
+        $reject2 = $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'pernyataan')->first();
 
         $canAdd = $pemberkasan ? false : true;
-        return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive', 'canAdd'));
+        return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive', 'canAdd', 'reject1', 'reject2'));
     }
 
     /**
@@ -121,7 +124,6 @@ class PemberkasanController extends Controller
 
         $pemberkasan = Pemberkasan::findOrFail($id);
 
-
         if ($request->hasFile('surat_rekomendasi')) {
             // Delete the old file if it exists
             if (basename($pemberkasan->file) && file_exists('files/pemberkasan/surat_rekomendasi/' . basename($pemberkasan->file))) {
@@ -130,6 +132,11 @@ class PemberkasanController extends Controller
 
             $pemberkasan->status_surat_rekomendasi = 'submited';
             $pemberkasan->save();
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'rekomendasi')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
 
             $file = $request->file('surat_rekomendasi');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -146,6 +153,11 @@ class PemberkasanController extends Controller
 
             $pemberkasan->status_surat_pernyataan = 'submited';
             $pemberkasan->save();
+            $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'pernyataan')->first();
+            if ($reject != null) {
+                $reject->status = 'completed';
+                $reject->save();
+            }
 
             $file = $request->file('surat_pernyataan');
             $filename = time() . '.' . $file->getClientOriginalExtension();
