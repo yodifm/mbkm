@@ -31,16 +31,20 @@
                     <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing"
                         value="{{ $data->dosen_pembimbing }}">
                 </div>
+                @if ($data->status_surat_rekomendasi == 'rejected')
+                    <div class="mb-3">
+                        <label for="surat_rekomendasi" class="form-label">Surat Rekomendasi</label>
+                        <input type="file" class="basic-filepond" id="surat_rekomendasi" name="surat_rekomendasi">
+                    </div>
+                @endif
 
-                <div class="mb-3">
-                    <label for="surat_rekomendasi" class="form-label">Surat Rekomendasi</label>
-                    <input type="file" class="basic-filepond" id="surat_rekomendasi" name="surat_rekomendasi">
-                </div>
-
-                <div class="mb-3">
-                    <label for="surat_pernyataan" class="form-label">Surat Pernyataan Tanggung Jawab Mutlak (SPTJM)</label>
-                    <input type="file" class="basic-filepond" id="surat_pernyataan" name="surat_pernyataan">
-                </div>
+                @if ($data->status_surat_pernyataan == 'rejected')
+                    <div class="mb-3">
+                        <label for="surat_pernyataan" class="form-label">Surat Pernyataan Tanggung Jawab Mutlak
+                            (SPTJM)</label>
+                        <input type="file" class="basic-filepond" id="surat_pernyataan" name="surat_pernyataan">
+                    </div>
+                @endif
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

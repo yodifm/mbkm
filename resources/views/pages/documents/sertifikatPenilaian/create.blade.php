@@ -19,14 +19,18 @@
                     <input type="number" class="form-control" id="NIM_id" name="NIM_id"
                         value="{{ auth()->user()->NIM }}" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="sertifikat" class="form-label">Sertifikat</label>
-                    <input type="file" class="form-control" id="sertifikat" name="sertifikat">
-                </div>
-                <div class="mb-3">
-                    <label for="penilaian" class="form-label">Penilaian</label>
-                    <input type="file" class="form-control" id="penilaian" name="penilaian">
-                </div>
+                @if ($data->status_sertifikat == 'rejected' || $data->status_sertifikat == 'pending')
+                    <div class="mb-3">
+                        <label for="sertifikat" class="form-label">Sertifikat</label>
+                        <input type="file" class="form-control" id="sertifikat" name="sertifikat">
+                    </div>
+                @endif
+                @if ($data->status_penilaian == 'rejected' || $data->status_penilaian == 'pending')
+                    <div class="mb-3">
+                        <label for="penilaian" class="form-label">Penilaian</label>
+                        <input type="file" class="form-control" id="penilaian" name="penilaian">
+                    </div>
+                @endif
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
