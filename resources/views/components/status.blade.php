@@ -1,13 +1,17 @@
 @if ($status == 1)
-    <td>Surat Rekomendasi & Surat PTJM</td>
+    <td>Surat Rekomendasi</td>
 @elseif ($status == 2)
-    <td>Letter of Acceptance</td>
+    <td>Surat PTJM</td>
 @elseif ($status == 3)
-    <td>Laporan Pertengahan</td>
+    <td>Letter of Acceptance</td>
 @elseif ($status == 4)
-    <td>Laporan Akhir</td>
+    <td>Laporan Pertengahan</td>
 @elseif ($status == 5)
-    <td>Sertifikat & Penilaian</td>
+    <td>Laporan Akhir</td>
+@elseif ($status == 6)
+    <td>Sertifikat</td>
+@elseif ($status == 7)
+    <td>Penilaian</td>
 @else
     <td>-</td>
 @endif
