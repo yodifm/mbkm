@@ -27,7 +27,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
+                    <select class="form-select" aria-label="Default select example" name="dosen_pembimbing"
+                        id="dosen_pembimbing">
+                        <option selected>Open this select menu</option>
+                        @if ($dosen)
+                            @foreach ($dosen as $item)
+                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                            @endforeach
+                        @else
+                            <option>Tidak ada data dosen</option>
+                        @endif
+                    </select>
                 </div>
 
                 <div class="mb-3">
