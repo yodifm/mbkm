@@ -28,14 +28,38 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
         User::create([
-            'name' => 'Mahasiswa',
+            'name' => 'uddin',
             'NIM' => '202502',
             'password' => bcrypt('password'),
             'role' => 'mahasiswa'
         ]);
         User::create([
-            'name' => 'Dosen',
+            'name' => 'rudi',
+            'NIM' => '202504',
+            'password' => bcrypt('password'),
+            'role' => 'mahasiswa'
+        ]);
+        User::create([
+            'name' => 'wawan',
+            'NIM' => '202505',
+            'password' => bcrypt('password'),
+            'role' => 'mahasiswa'
+        ]);
+        User::create([
+            'name' => 'arip',
             'NIM' => '202503',
+            'password' => bcrypt('password'),
+            'role' => 'dosen'
+        ]);
+        User::create([
+            'name' => 'eko',
+            'NIM' => '202506',
+            'password' => bcrypt('password'),
+            'role' => 'dosen'
+        ]);
+        User::create([
+            'name' => 'prof.juju',
+            'NIM' => '202507',
             'password' => bcrypt('password'),
             'role' => 'dosen'
         ]);
