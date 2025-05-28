@@ -5,35 +5,35 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('pemberkasan.update', $data->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('datadosens.update', $data->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
+                    <label for="NIM" class="form-label">NIP</label>
+                    <input type="text" class="form-control" id="NIM" name="NIM" value="{{ $data->NIM }}">
+                </div>
+                <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="{{ route('datadosens.update', $data->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="mb-3">
-                    <label for="NIM" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="NIM" name="NIM">
-                </div>
-                <div class="mb-3">
-                    <label for="semester" class="form-label">Semester</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
-                </div>
-                <div class="mb-3">
-                    <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
+                    <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                 </div>
 
-                <div class="mb-3">
-                    <label for="surat_rekomendasi" class="form-label">Surat Rekomendasi</label>
-                    <input type="file" class="basic-filepond" id="surat_rekomendasi" name="surat_rekomendasi">
-                </div>
-
-                <div class="mb-3">
-                    <label for="surat_pernyataan" class="form-label">Surat Pernyataan</label>
-                    <input type="file" class="basic-filepond" id="surat_pernyataan" name="surat_pernyataan">
-                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -61,7 +61,8 @@
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-filter/filepond-plugin-image-filter.min.js') }}">
     </script>
-    <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
+    <script
+        src="{{ asset('/dist/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
     </script>
     <script src="{{ asset('/dist/assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}">
     </script>

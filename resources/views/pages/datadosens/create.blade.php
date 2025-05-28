@@ -7,24 +7,8 @@
         <div class="card-body">
             <form method="POST" action="{{ route('datadosens.store') }}" enctype="multipart/form-data">
                 @csrf
-                {{-- <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="NIM" class="form-label">NIM</label>
-                    <input type="number" class="form-control" id="NIM" name="NIM">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="semester" class="form-label">Semester</label>
-                    <input type="text" class="form-control" id="semester" name="semester">
-                </div> --}}
-                {{-- <div class="mb-3">
-                    <label for="dosen_pembimbing" class="form-label">Dosen Pembimbing</label>
-                    <input type="text" class="form-control" id="dosen_pembimbing" name="dosen_pembimbing">
-                </div> --}}
                 <div class="mb-3">
-                    <label for="NIM" class="form-label">NIM</label>
+                    <label for="NIM" class="form-label">NIP</label>
                     <input type="text" class="form-control" id="NIM" name="NIM">
                 </div>
                 <div class="mb-3">
@@ -33,12 +17,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
-
-
-
-
+                <input type="text" value="dosen" class="form-control" id="role" name="role" hidden>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

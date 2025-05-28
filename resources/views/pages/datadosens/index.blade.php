@@ -4,7 +4,7 @@
     @include('components.pagetitle', ['title' => $title])
 
     <div class="card">
-        <div class="card-header bg-success text-white d-flex align-items-center">
+        <div class="text-white card-header bg-success d-flex align-items-center">
             <img src={{ asset('histo.png') }} alt="Logo" style="width: 25px; height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <h5 class="mb-0" style="color: #fff">Data Dosen MBKM Program Studi Manajemen Pendidikan</h5>
         </div> <br />
@@ -21,13 +21,9 @@
                     <thead class="table-success">
                         <tr>
                             <th>No</th>
-                            <th>NIM</th>
+                            <th>NIP</th>
                             <th>Name</th>
-                            <th>Status</th>
                             <th>Action</th>
-
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +37,6 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->NIM }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->name }}</td>
-
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('datadosens.edit', $item->id),

@@ -54,30 +54,14 @@ class datadosensController extends Controller
     public function store(Request $request)
     {
         $credential = $request->validate([
-
-            'NIM' => 'required',
+            'NIM' => 'required|unique:users,NIM',
             'name' => 'required',
             'password' => 'required',
-
-
         ]);
 
-        $credential['NIM'] = Auth::user()->NIM;
-
-        // dd($credential['NIM']);
-
-        // if ($request->hasFile('LoA')) {
-        //     $file = $request->file('LoA');
-        //     $filename = time() . '.' . $file->getClientOriginalExtension();
-        //     $file->move('files/datadosens/LoA/', $filename);
-        //     $url = url('/files/datadosens/LoA/' . $filename);
-        //     $credential['LoA'] = $url;
-        // }
-
-
-
+        $credential['role'] = 'dosen';
         user::create($credential);
-        return redirect('/dashboard/datadosens')->with('success', 'datadosens created successfully');
+        return redirect('/dashboard/datadosens')->with('success', 'data dosen created successfully');
     }
     /**
      * Show the form for editing the specified resource.
@@ -97,11 +81,13 @@ class datadosensController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'NIM' => 'required',
-            'name' => 'required',
-            'password' => 'required',
+            'NIM' => 'nullable|unique:users,NIM,' . $id,
+            'name' => 'nullable',
+            'password' => 'confirmed',
         ]);
 
+        $dosen = user::find($id);
+        $dosen->update($credential);
 
         return redirect('/dashboard/datadosens')->with('success', 'Data dosen updated successfully');
     }
