@@ -16,19 +16,18 @@ class PemberkasanController extends Controller
     public function index()
     {
         $title = 'Pemberkasan';
-        $data = Pemberkasan::with('user')->first();
+        $user = auth()->user();
+        $data = Pemberkasan::with('user')->where('NIM_id', $user->NIM)->first();
         $active = 'pemberkasan';
         $subActive = 'pemberkasan';
         $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
 
-        $user = auth()->user();
-        $pemberkasan = Pemberkasan::where('NIM_id', $user->NIM)->first();
         $reject1 = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'rekomendasi')->first();
         $reject2 = $reject = RejectionReasons::where('NIM_id', Auth::user()->NIM)->where('status', 'rejected')->where('file_type', 'pernyataan')->first();
 
-        $canAdd = $pemberkasan ? false : true;
+        $canAdd = $data ? false : true;
         return view('pages.pemberkasan.index', compact('title', 'data', 'active', 'subActive', 'canAdd', 'reject1', 'reject2'));
     }
 
@@ -40,7 +39,8 @@ class PemberkasanController extends Controller
         $title = 'Add pemberkasan';
         $active = 'pemberkasan';
         $subActive = 'pemberkasan';
-        return view('pages.pemberkasan.create', compact('title', 'active', 'subActive'));
+        $dosen = User::where('role', 'dosen')->get();
+        return view('pages.pemberkasan.create', compact('title', 'active', 'subActive', 'dosen'));
     }
 
     /**
@@ -105,8 +105,10 @@ class PemberkasanController extends Controller
         $data = Pemberkasan::with('user')->find($id);
         $active = 'pemberkasan';
         $subActive = 'pemberkasan';
+        $dosen = User::where('role', 'dosen')->get();
+
         // dd($data);
-        return view('pages.pemberkasan.edit', compact('title', 'data', 'active', 'subActive'));
+        return view('pages.pemberkasan.edit', compact('title', 'data', 'active', 'subActive', 'dosen'));
     }
 
     /**
