@@ -70,21 +70,14 @@ class datamahasiswasController extends Controller
     public function store(Request $request)
     {
         $credential = $request->validate([
-
-            'program_mbkm' => 'required',
-            'mitra_mbkm' => 'required',
-            'posisi' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' => 'required',
-            'LoA' => 'required|mimes:pdf|max:2048',
-
+            'NIM' => 'required|unique:users,NIM',
+            'name' => 'required',
+            'password' => 'required',
         ]);
 
-        $credential['NIM'] = Auth::user()->NIM;
-
-
+        $credential['role'] = 'mahasiswa';
         user::create($credential);
-        return redirect('/dashboard/datamahasiswas')->with('success', 'datamahasiswas created successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa created successfully');
     }
     /**
      * Show the form for editing the specified resource.
@@ -104,46 +97,15 @@ class datamahasiswasController extends Controller
     public function update(Request $request, $id)
     {
         $credential = $request->validate([
-            'NIM' => 'required',
-            'program_mbkm' => 'required',
-            'mitra_mbkm' => 'required',
-            'posisi' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' => 'required',
-            'LoA' => 'required|mimes:pdf|max:2048',
+            'NIM' => 'nullable|unique:users,NIM,' . $id,
+            'name' => 'nullable',
+            'password' => 'confirmed',
         ]);
-
         $mahasiswa = user::findOrFail($id);
-
-
-        if ($request->hasFile('LoA')) {
-            if (basename($mahasiswa->file) && file_exists('files/datamahasiswas/' . basename($mahasiswa->file))) {
-                unlink('files/datamahasiswas/' . basename($mahasiswa->file));
-            }
-
-            $file = $request->file('surat_rekomendasi');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datamahasiswas/', $filename);
-            $url = url('/files/datamahasiswas/' . $filename);
-            $credential['surat_rekomendasi'] = $url;
-        }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            // Delete the old file if it exists
-            if (basename($mahasiswa->file) && file_exists('files/datamahasiswas/' . basename($mahasiswa->file))) {
-                unlink('files/datamahasiswas/' . basename($mahasiswa->file));
-            }
-
-            $file = $request->file('surat_pernyataan');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('files/datamahasiswas/', $filename);
-            $url = url('/files/datamahasiswas/' . $filename);
-            $credential['surat_pernyataan'] = $url;
-        }
 
         $mahasiswa->update($credential);
 
-        return redirect('/dashboard/datamahasiswas')->with('success', 'Certificate updated successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa updated successfully');
     }
 
     /**
@@ -153,6 +115,6 @@ class datamahasiswasController extends Controller
     {
         $mahasiswa = user::find($id);
         $mahasiswa->delete();
-        return redirect('/dashboard/pemberkasan')->with('success', 'Certificate deleted successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa deleted successfully');
     }
 }
