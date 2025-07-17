@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
                 {!! $status4 == 'approved' && $status5 == 'pending'
-                    ? '<a href="' . route('laporan-akhir.edit', $data->id) . ' " class="btn btn-primary ">Add Documents</a>'
+                    ? '<a href="' . route('laporan-akhir.edit', $data->id) . ' " class="btn btn-primary ">Tambah Dokumen</a>'
                     : '' !!}
 
             </div>
@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Laporan Akhir</th>
                             <th scope="col">Status</th>
@@ -40,7 +40,7 @@
                                 <td>
                                     <a href="{{ asset($data->laporan_akhir) }}"
                                         download="{{ basename($data->laporan_akhir) }}"
-                                        class="btn btn-primary btn-sm">Download Laporan akhir</a>
+                                        class="btn btn-primary btn-sm">Unduh Laporan akhir</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_laporan_akhir,

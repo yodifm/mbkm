@@ -2,6 +2,22 @@
 
 @section('section')
     {{-- @include('components.pagetitle', ['title' => $title]) --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myModal = new bootstrap.Modal(document.getElementById('downloadModal'));
+        myModal.show();
+    });
+</script>
+
+
+
+
+
+
+
+
 
     <div class="page-content">
         <section class="row">
@@ -18,29 +34,58 @@
 
                             </div>
                             <div class="card-body">
+                               
+
                                 <div class="form-control-icon">
+                                    <a href="https://drive.google.com/drive/folders/1a3qGUhDoPOdKWONjbwHo9nyvsu_wsxKs?usp=sharing" target="_blank">
+                                        <button type="button" class="btn btn-success"
+                                            style="background-color: #34623F; border-color: #34623F;">
+                                            <i class="bi bi-download" style="margin-right: 5px;"></i>
+                                            Pedoman Kegiatan MBKM
+                                        </button>
+                                    </a> &nbsp; &nbsp;
+                                    <a href="https://drive.google.com/drive/folders/16DRkEAT1qz45lBC2fNl2dhnW__U38Msd?usp=sharing" target="_blank">
                                     <button type="button" class="btn btn-success"
                                         style="background-color: #34623F; border-color: #34623F;">
                                         <i class="bi bi-download" style="margin-right: 5px;"></i>
-                                        Pedoman Kegiatan MBKM
-                                    </button> &nbsp; &nbsp;
-                                    <button type="button" class="btn btn-success"
-                                        style="background-color: #34623F; border-color: #34623F;">
-                                        <i class="bi bi-download" style="margin-right: 5px;"></i>
-                                        Pedoman Kegiatan MBKM
+                                        Video Tutorial Penggunaan SIP-MBKM
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                 
+
+
 
                         @if (auth()->user()->role == 'mahasiswa')
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="form-control-icon" style="display: flex; align-items: center;">
+                                     <!-- Modal -->
+<div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img src="{{ asset('Alur.jpeg') }}" alt="Alur Penggunaan" class="img-fluid">
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Saya Mengerti</button>
+      </div>
+    </div>
+  </div>
+</div>
+                                    {{-- <div class="form-control-icon" style="display: flex; align-items: center;">
                                         <img src={{ asset('Activity.png') }} alt="Icon"
                                             style="width: 24px; height: 24px; margin-right: 10px;">
                                         <h4 style="margin: 0;">Aktivitas</h4>
+                                    </div> --}}
+
+                                    <div class="form-control-icon" style="display: flex; align-items: center;">
+                                        <img src={{ asset('Activity3.png') }} alt="Icon"
+                                            style="width: 24px; height: 24px; margin-right: 10px;">
+                                        <h4 style="margin: 0;">Aktivitas</h4>
                                     </div>
+    
 
                                 </div>
 
@@ -90,7 +135,7 @@
                                                     <p style="margin: 5px 0; font-size: 10px; font">Langkah 1</p>
                                                     <p style="margin: 0; font-size: 14px;">Surat Rekomendasi</p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
                                                 </div>
                                             @endif
                                         @else
@@ -101,7 +146,7 @@
                                                 <p style="margin: 5px 0; font-size: 10px; font">Langkah 1</p>
                                                 <p style="margin: 0; font-size: 14px;">Surat Rekomendasi</p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
                                             </div>
                                         @endif
 
@@ -149,7 +194,7 @@
                                                     <p style="margin: 5px 0; font-size: 10px; font">Langkah 2</p>
                                                     <p style="margin: 0; font-size: 14px;">Surat PTJM</p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
                                                 </div>
                                             @endif
                                         @else
@@ -160,7 +205,7 @@
                                                 <p style="margin: 5px 0; font-size: 10px; font">Langkah 2</p>
                                                 <p style="margin: 0; font-size: 14px;">Surat PTJM</p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
                                             </div>
                                         @endif
 
@@ -211,7 +256,8 @@
                                                     <p style="margin: 0; font-size: 14px;"><em>Letter of Acceptance</em>
                                                     </p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                                 </div>
                                             @endif
                                         @else
@@ -222,7 +268,8 @@
                                                 <p style="margin: 5px 0; font-size: 10px;">Langkah 3</p>
                                                 <p style="margin: 0; font-size: 14px;"><em>Letter of Acceptance</em></p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                             </div>
                                         @endif
 
@@ -270,7 +317,8 @@
                                                     <p style="margin: 5px 0; font-size: 10px;">Langkah 4</p>
                                                     <p style="margin: 0; font-size: 14px;"><em>Laporan Pertengahan</em></p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                                 </div>
                                             @endif
                                         @else
@@ -281,7 +329,8 @@
                                                 <p style="margin: 5px 0; font-size: 10px;">Langkah 4</p>
                                                 <p style="margin: 0; font-size: 14px;">Laporan Pertengahan</p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                             </div>
                                         @endif
 
@@ -330,7 +379,8 @@
                                                     <p style="margin: 5px 0; font-size: 10px;">Langkah 5</p>
                                                     <p style="margin: 0; font-size: 14px;"><em>Laporan Akhir</em></p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                                 </div>
                                             @endif
                                         @else
@@ -341,7 +391,8 @@
                                                 <p style="margin: 5px 0; font-size: 10px;">Langkah 5</p>
                                                 <p style="margin: 0; font-size: 14px;">Laporan Akhir</p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                             </div>
                                         @endif
 
@@ -392,7 +443,8 @@
                                                     <p style="margin: 0; font-size: 14px;"><em>Sertifikat & Penilaian</em>
                                                     </p>
                                                     <button class="btn btn-secondary"
-                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                                 </div>
                                             @endif
                                         @else
@@ -403,7 +455,8 @@
                                                 <p style="margin: 5px 0; font-size: 10px;">Langkah 6</p>
                                                 <p style="margin: 0; font-size: 14px;">Sertifikat & Penilaian</p>
                                                 <button class="btn btn-secondary"
-                                                    style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px;">Pending</button>
+                                                                                                        style="background-color: #F2F2F2; color: #666; border: none; margin-top: 5px; font-size:12px">Menunggu Persetujuan</button>
+
                                             </div>
                                         @endif
                                     </div>
@@ -544,24 +597,27 @@
                         <div class="form-control-icon"
                             style="display: flex; flex-direction: column; align-items: start; padding-left: 20px;">
                             <div style="display: flex; align-items: center;">
-                                <img src="{{ asset('unduhan.png') }}" alt="Icon" style="margin-right: 10px;">
-                                <h4 style="margin: 0; color:#000">Unduhan</h4>
+                                <img src="{{ asset('ActivityC2.png') }}" alt="Icon" style="margin-right: 10px;">
+                                <h4 style="margin: 0; ">Unduhan</h4>
                             </div>
+                            <a href="https://docs.google.com/document/d/1fv9v1X-sLXqckXIBNARKNc5cQANEO1tO/edit?usp=sharing&ouid=110523037482322510818&rtpof=true&sd=true " target="_blank" style="text-decoration: none;">
                             <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px">
                                 <img src="{{ asset('unduh2.png') }}" alt="Icon" style margin-right: 10px;">&nbsp;
                                 <ul style="margin: 0; padding-left: 0; list-style: none;">
-                                    <li style="margin: 0; font-weight: bold; color: #2C7E98;">Unduh format Surat
-                                        Rekomendasi</li>
-
-                                </ul>
-                            </div>
-                            <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px">
-                                <img src="{{ asset('unduh2.png') }}" alt="Icon" style margin-right: 10px;">&nbsp;
-                                <ul style="margin: 0; padding-left: 0; list-style: none;">
-                                    <li style="margin: 0; font-weight: bold; color:#2C7E98">Unduh format Surat Rekomendasi
+                                    <li style="margin: 0; font-weight: bold;">Surat Rekomendasi
                                     </li>
                                 </ul>
                             </div>
+                        </a>
+                            <a href="https://docs.google.com/document/d/1U-VdfWp4ADqXAXPmZ1uVfgT3aGYvSunv/edit?usp=sharing&ouid=110523037482322510818&rtpof=true&sd=true " target="_blank" style="text-decoration: none;">
+                            <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px">
+                                <img src="{{ asset('unduh2.png') }}" alt="Icon" style margin-right: 10px;">&nbsp;
+                                <ul style="margin: 0; padding-left: 0; list-style: none;">
+                                    <li style="margin: 0; font-weight: bold;">Format Surat Pertanggung Jawaban Mutlak 
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
 
 
                         </div>
@@ -571,25 +627,22 @@
                         <div class="form-control-icon"
                             style="display: flex; flex-direction: column; align-items: start; padding-left: 20px;">
                             <div style="display: flex; align-items: center;">
-                                <img src="{{ asset('unduhan.png') }}" alt="Icon" style="margin-right: 10px;">
-                                <h4 style="margin: 0; color:#000">Informasi MBKM</h4>
+                                <img src="{{ asset('ActivityC2.png') }}" alt="Icon" style="margin-right: 10px;">
+                                <h4 style="margin: 0; ">Informasi MBKM</h4>
                             </div>
                             <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px">
                                 <ul style="margin: 0; padding-left: 0; list-style: none;">
-                                    <li style="margin: 0; color: #000;">
-                                        <span style="font-style: italic;">National onboarding</span> MSIB Batch 7 dilakukan
-                                        pada tanggal 10 Mei 2024
-                                    </li>
+                                    
 
 
                                 </ul>
                             </div>
-                            <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px">
+                            <div style="margin-top: 10px; display: flex; align-items: center; padding-left:40px text-decoration: none">
                                 <ul style="margin: 0; padding-left: 0; list-style: none;">
-                                    <li style="margin: 0; color: #000;">
+                                    <li style="margin: 0; ">
                                         Kunjungi laman
                                         <a href="https://kampusmerdeka.kemdikbud.go.id/"
-                                            style="color: #2C7E98; text-decoration: none;">
+                                            style=" text-decoration: none;">
                                             https://kampusmerdeka.kemdikbud.go.id/
                                         </a>
                                         untuk informasi program lebih lengkap.
@@ -647,3 +700,5 @@
         </section>
     </div>
 @endsection
+
+

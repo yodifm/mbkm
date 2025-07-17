@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
                 {!! $status3 == 'approved' && $status4 == null
-                    ? '<a href="' . route('laporan-pertengahan.create') . ' " class="btn btn-primary ">Add Documents</a>'
+                    ? '<a href="' . route('laporan-pertengahan.create') . ' " class="btn btn-primary ">Tambah Dokumen</a>'
                     : '' !!}
 
             </div>
@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Laporan Pertengahan</th>
                             <th scope="col">Status</th>
@@ -30,7 +30,7 @@
                     <tbody>
                         @if ($data == null)
                             <tr>
-                                <td colspan="12" class="text-center">No Data Found.</td>
+                                <td colspan="12" class="text-center">Data Tidak Ditemukan</td>
                             </tr>
                         @else
                             <tr>
@@ -40,7 +40,7 @@
                                 <td>
                                     <a href="{{ asset($data->laporan_pertengahan) }}"
                                         download="{{ basename($data->laporan_pertengahan) }}"
-                                        class="btn btn-primary btn-sm">Download Laporan Pertengahan</a>
+                                        class="btn btn-primary btn-sm">Unduh Laporan Pertengahan</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_laporan_pertengahan,

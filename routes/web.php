@@ -4,8 +4,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DatambkmController;
 use App\Http\Controllers\PemberkasanController;
-use App\Http\Controllers\datamahasiswasController;
-use App\Http\Controllers\datadosensController;
+use App\Http\Controllers\DatamahasiswasController;
+use App\Http\Controllers\DatadosensController;
 use App\Http\Controllers\Documents\LaporanAkhirController;
 use App\Http\Controllers\Documents\LaporanPertengahanController;
 use App\Http\Controllers\Documents\SertifikatPenilaianController;

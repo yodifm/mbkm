@@ -58,7 +58,7 @@ class datamahasiswasController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data mahasiswa';
+        $title = 'Tambah Data mahasiswa';
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
         return view('pages.datamahasiswas.create', compact('title', 'active', 'subActive'));
@@ -77,14 +77,14 @@ class datamahasiswasController extends Controller
 
         $credential['role'] = 'mahasiswa';
         user::create($credential);
-        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa created successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'Data Mahasiswa Berhasil Ditambahkan');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Edit Data Mahasiswa';
+        $title = 'Ubah Data Mahasiswa';
         $data = User::find($id);
         $active = 'datamahasiswas';
         $subActive = 'datamahasiswas';
@@ -105,7 +105,7 @@ class datamahasiswasController extends Controller
 
         $mahasiswa->update($credential);
 
-        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa updated successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'Data Mahasiswa Berhasil Diperbarui');
     }
 
     /**
@@ -115,6 +115,6 @@ class datamahasiswasController extends Controller
     {
         $mahasiswa = user::find($id);
         $mahasiswa->delete();
-        return redirect('/dashboard/datamahasiswas')->with('success', 'data mahasiswa deleted successfully');
+        return redirect('/dashboard/datamahasiswas')->with('success', 'Data Mahasiswa Berhasil Dihapus');
     }
 }

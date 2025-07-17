@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have been logged in');
+        return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Berhasil Masuk');
     }
 
     /**
@@ -43,6 +43,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'You have been logged out');
+        return redirect('/')->with('success', 'Berhasil Keluar');
     }
 }

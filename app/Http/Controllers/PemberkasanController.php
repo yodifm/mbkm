@@ -94,14 +94,14 @@ class PemberkasanController extends Controller
         }
 
         Pemberkasan::create($credential);
-        return redirect('/dashboard/pemberkasan')->with('success', 'pemberkasan created successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'pemberkasan Berhasil Dibuat');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Edit pemberkasan';
+        $title = 'Ubah pemberkasan';
         $data = Pemberkasan::with('user')->find($id);
         $active = 'pemberkasan';
         $subActive = 'pemberkasan';
@@ -170,7 +170,7 @@ class PemberkasanController extends Controller
 
         $pemberkasan->update($credential);
 
-        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan updated successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan Berhasil Diupate');
     }
 
     /**
@@ -183,6 +183,6 @@ class PemberkasanController extends Controller
             unlink('images/pemberkasan/' . basename($pemberkasan->image));
         }
         $pemberkasan->delete();
-        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan deleted successfully');
+        return redirect('/dashboard/pemberkasan')->with('success', 'Pemberkasan Berhasil Dihapus');
     }
 }

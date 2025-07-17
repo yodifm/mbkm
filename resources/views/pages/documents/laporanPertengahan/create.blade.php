@@ -8,7 +8,7 @@
             <form method="POST" action="{{ route('laporan-pertengahan.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ auth()->user()->name }}" disabled>
                 </div>
@@ -21,7 +21,7 @@
                     <label for="laporan_pertengahan" class="form-label">Laporan Pertengahan</label>
                     <input type="file" class="form-control" id="laporan_pertengahan" name="laporan_pertengahan">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>

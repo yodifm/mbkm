@@ -37,7 +37,7 @@ class LaporanPertengahanController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data Laporan Pertengahan';
+        $title = 'Tambah Data Laporan Pertengahan';
         $active = 'documents';
         $subActive = 'laporanPertengahan';
         return view('pages.documents.laporanPertengahan.create', compact('title', 'active', 'subActive'));
@@ -72,7 +72,7 @@ class LaporanPertengahanController extends Controller
         $data = Documents::where('NIM_id', Auth::user()->NIM)->first();
         $data->status_laporan_pertengahan = "submited";
         $data->save();
-        return redirect('/dashboard/documents/laporan-pertengahan')->with('success', 'laporan pertengahan created successfully');
+        return redirect('/dashboard/documents/laporan-pertengahan')->with('success', 'Laporan Pertengahan Berhasil Ditambahkan');
     }
 
     /**
@@ -88,7 +88,7 @@ class LaporanPertengahanController extends Controller
      */
     public function edit(string $id)
     {
-        $title = 'Add Data Laporan Pertengahan';
+        $title = 'Tambah Data Laporan Pertengahan';
         $data = Documents::find($id);
         $active = 'documents';
         $subActive = 'laporanPertengahan';
@@ -128,7 +128,7 @@ class LaporanPertengahanController extends Controller
         }
         $laporan_pertengahan->update($credential);
 
-        return redirect()->route('laporan-pertengahan.index')->with('success', 'laporan pertengahan updated successfully');
+        return redirect()->route('laporan-pertengahan.index')->with('success', 'Laporan Pertengahan Berhasil Diperbarui');
     }
 
     /**

@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
-                {!! $canAdd ? '<a href="' . route('pemberkasan.create') . '" class="btn btn-primary">Add Documents</a>' : '' !!}
+                {!! $canAdd ? '<a href="' . route('pemberkasan.create') . '" class="btn btn-primary">Tambah Dokumen</a>' : '' !!}
 
             </div>
             <div class="table-responsive">
@@ -14,7 +14,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Semester</th>
                             <th scope="col">Angkatan</th>
@@ -32,7 +32,7 @@
                     <tbody>
                         @if ($data == null)
                             <tr>
-                                <td colspan="10" class="text-center">No Data Found.</td>
+                                <td colspan="10" class="text-center">Data Tidak Ditemukan.</td>
                             </tr>
                         @else
                             <tr>
@@ -45,7 +45,7 @@
                                 <td>
                                     <a href="{{ asset($data->surat_rekomendasi) }}"
                                         download="{{ basename($data->surat_rekomendasi) }}"
-                                        class="btn btn-primary btn-sm">Download Surat Rekomendasi</a>
+                                        class="btn btn-primary btn-sm">Unduh Surat Rekomendasi</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_surat_rekomendasi,
@@ -53,7 +53,7 @@
                                 <td>
                                     <a href="{{ asset($data->surat_pernyataan) }}"
                                         download="{{ basename($data->surat_pernyataan) }}"
-                                        class="btn btn-danger btn-sm">Download Surat Pernyataan</a>
+                                        class="btn btn-danger btn-sm">Unduh Surat Pernyataan</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_surat_pernyataan,

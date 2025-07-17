@@ -38,7 +38,7 @@ class DatambkmController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data MBKM';
+        $title = 'Tambah Data MBKM';
         $active = 'datambkm';
         $subActive = 'datambkm';
         return view('pages.datambkm.create', compact('title', 'active', 'subActive'));
@@ -77,14 +77,14 @@ class DatambkmController extends Controller
 
 
         datambkm::create($credential);
-        return redirect('/dashboard/datambkm')->with('success', 'datambkm created successfully');
+        return redirect('/dashboard/datambkm')->with('success', 'Data MBKM Berhasil Ditambahkan');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Edit Data MBKM';
+        $title = 'Ubah Data MBKM';
         $data = Datambkm::find($id);
         $active = 'datambkm';
         $subActive = 'datambkm';
@@ -129,7 +129,7 @@ class DatambkmController extends Controller
 
         $data_mbkm->update($credential);
 
-        return redirect('/dashboard/datambkm')->with('success', 'data mbkm updated successfully');
+        return redirect('/dashboard/datambkm')->with('success', 'Data MBKM Berhasil Diperbarui');
     }
 
     /**
@@ -142,6 +142,6 @@ class DatambkmController extends Controller
             unlink('images/pemberkasan/' . basename($data_mbkm->image));
         }
         $data_mbkm->delete();
-        return redirect('/dashboard/datambkm')->with('success', 'data mbkm deleted successfully');
+        return redirect('/dashboard/datambkm')->with('success', 'Data MBKM Berhasil Dihapus');
     }
 }

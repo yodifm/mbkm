@@ -9,7 +9,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ auth()->user()->name }}" disabled>
                 </div>
@@ -46,7 +46,7 @@
                     <label for="LoA" class="form-label">LoA</label>
                     <input type="file" class="form-control" id="LoA" name="LoA">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>

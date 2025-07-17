@@ -22,14 +22,14 @@
                         <tr>
                             <th>No</th>
                             <th>NIP</th>
-                            <th>Name</th>
-                            <th>Action</th>
+                            <th>Nama</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($data->count() == 0)
                             <tr>
-                                <td colspan="5" class="text-center">No Data Found.</td>
+                                <td colspan="5" class="text-center">Data Tidak Ditemukan</td>
                             </tr>
                         @else
                             @foreach ($data as $item)

@@ -8,7 +8,7 @@
             <form method="POST" action="{{ route('pemberkasan.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ auth()->user()->name }}" disabled>
                 </div>
@@ -60,7 +60,7 @@
                     <small class="text-muted">Format: PDF, Max: 2MB</small>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>

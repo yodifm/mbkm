@@ -9,7 +9,7 @@
                 @csrf
                 @method('PATCH')
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ auth()->user()->name }}" disabled>
                 </div>
@@ -22,7 +22,7 @@
                     <label for="laporan_akhir" class="form-label">Laporan Akhir</label>
                     <input type="file" class="form-control" id="laporan_akhir" name="laporan_akhir">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>

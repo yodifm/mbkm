@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
                 {!! $status5 == 'approved' && ($status6 == 'pending' || $status7 == 'pending')
-                    ? '<a href="' . route('sertifikat.edit', $data->id) . ' " class="btn btn-primary ">Add Documents</a>'
+                    ? '<a href="' . route('sertifikat.edit', $data->id) . ' " class="btn btn-primary ">Tambah Dokumen</a>'
                     : '' !!}
 
             </div>
@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Sertifikat</th>
                             <th scope="col">Status</th>
@@ -32,7 +32,7 @@
                     <tbody>
                         @if ($data == null || $data->sertifikat == null || $data->penilaian == null)
                             <tr>
-                                <td colspan="12" class="text-center">No Data Found.</td>
+                                <td colspan="12" class="text-center">Data Tidak Ditemukan</td>
                             </tr>
                         @else
                             <tr>
@@ -41,14 +41,14 @@
                                 <td>{{ $data->user->NIM }}</td>
                                 <td>
                                     <a href="{{ asset($data->sertifikat) }}" download="{{ basename($data->sertifikat) }}"
-                                        class="btn btn-primary btn-sm">Download Sertifikat</a>
+                                        class="btn btn-primary btn-sm">Unduh Sertifikat</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_sertifikat,
                                 ])
                                 <td>
                                     <a href="{{ asset($data->penilaian) }}" download="{{ basename($data->penilaian) }}"
-                                        class="btn btn-primary btn-sm">Download Penilaian</a>
+                                        class="btn btn-primary btn-sm">Unduh Penilaian</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_penilaian,

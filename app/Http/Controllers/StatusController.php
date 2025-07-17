@@ -19,7 +19,7 @@ class StatusController extends Controller
         $pemberkasan->status_surat_rekomendasi = 'approved';
         $pemberkasan->save();
 
-        return redirect()->back()->with('success', 'Surat Rekomendasi di approve');
+        return redirect()->back()->with('success', 'Surat Rekomendasi Disetujui');
     }
 
     public function approvePernyataan($id)
@@ -33,7 +33,7 @@ class StatusController extends Controller
         $pemberkasan->status_surat_pernyataan = 'approved';
         $pemberkasan->save();
 
-        return redirect()->back()->with('success', 'Surat Pernyataan di approve');
+        return redirect()->back()->with('success', 'Surat Pernyataan di Disetujui');
     }
 
     public function approveLoA($id)
@@ -47,7 +47,7 @@ class StatusController extends Controller
         $mbkm->status_LoA = 'approved';
         $mbkm->save();
 
-        return redirect()->back()->with('success', 'Surat LoA di approve');
+        return redirect()->back()->with('success', 'Surat LoA di Disetujui');
     }
 
     public function approveLaporan_pertengahan($id)
@@ -61,7 +61,7 @@ class StatusController extends Controller
         $documents->status_laporan_pertengahan = 'approved';
         $documents->save();
 
-        return redirect()->back()->with('success', 'Laporan Pertengahan di approve');
+        return redirect()->back()->with('success', 'Laporan Pertengahan di Disetujui');
     }
 
     public function approveLaporan_akhir($id)
@@ -75,7 +75,7 @@ class StatusController extends Controller
         $documents->status_laporan_akhir = 'approved';
         $documents->save();
 
-        return redirect()->back()->with('success', 'Laporan akhir di approve');
+        return redirect()->back()->with('success', 'Laporan akhir di Disetujui');
     }
 
     public function approveSertifikat($id)
@@ -89,7 +89,7 @@ class StatusController extends Controller
         $documents->status_sertifikat = 'approved';
         $documents->save();
 
-        return redirect()->back()->with('success', 'Sertifikat di approve');
+        return redirect()->back()->with('success', 'Sertifikat di Disetujui');
     }
 
     public function approvePenilaian($id)
@@ -100,6 +100,6 @@ class StatusController extends Controller
         $documents->status_penilaian = 'approved';
         $documents->save();
 
-        return redirect()->back()->with('success', 'Penilaian di approve');
+        return redirect()->back()->with('success', 'Penilaian di Disetujui');
     }
 }

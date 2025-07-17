@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="mb-4 w-100 d-flex justify-content-end">
                 {!! $status2 == 'approved' && $status3 == null
-                    ? '<a href="' . route('datambkm.create') . ' " class="btn btn-primary ">Add Documents</a>'
+                    ? '<a href="' . route('datambkm.create') . ' " class="btn btn-primary ">Tambah Dokumen</a>'
                     : '' !!}
 
             </div>
@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Program MBKM</th>
                             <th scope="col">Mitra MBKM</th>
@@ -35,7 +35,7 @@
                     <tbody>
                         @if ($data == null)
                             <tr>
-                                <td colspan="12" class="text-center">No Data Found.</td>
+                                <td colspan="12" class="text-center">Data Tidak Ditemukan</td>
                             </tr>
                         @else
                             <tr>
@@ -50,7 +50,7 @@
 
                                 <td>
                                     <a href="{{ asset($data->LoA) }}" download="{{ basename($data->LoA) }}"
-                                        class="btn btn-primary btn-sm">Download LoA</a>
+                                        class="btn btn-primary btn-sm">Unduh LoA</a>
                                 </td>
                                 @include('components.statusFile', [
                                     'data' => $data->status_LoA,

@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <button class="mt-5 text-white shadow-lg btn btn-block btn-lg" style="background-color: #34623F"
-                            type="submit">Log in</button>
+                            type="submit">Masuk</button>
                     </form>
 
                 </div>

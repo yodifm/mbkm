@@ -39,7 +39,7 @@ class SertifikatPenilaianController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Add Data Sertifikat & Penilaian';
+        $title = 'Tambah Data Sertifikat & Penilaian';
         $active = 'documents';
         $data = Documents::find($id);
         $subActive = 'sertifikatPenilaian';

@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" id="NIM" name="NIM">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name">
                 </div>
                 <div class="mb-3">
@@ -21,7 +21,7 @@
                 </div>
                 <input type="text" value="dosen" class="form-control" id="role" name="role" hidden>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>

@@ -51,7 +51,7 @@
                 <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }} ">
                     <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
-                        <span>Home</span>
+                        <span>Beranda</span>
                     </a>
 
 
@@ -122,7 +122,7 @@
                     @csrf
                     <button type="submit" class='text-white sidebar-link bg-danger btn w-100'>
                         <i class="text-white bi bi-box-arrow-right"></i>
-                        <span>Logout cms</span>
+                        <span>Keluar</span>
                     </button>
                 </form>
             </ul>

@@ -19,7 +19,7 @@ class datadosensController extends Controller
         $active = 'datadosens';
         $subActive = 'datadosens';
         $titleModal = 'Delete ' . $title;
-        $text = "Are you sure you want to delete?";
+        $text = "Apakah anda yakin untuk di hapus?";
         confirmDelete($titleModal, $text);
         return view('pages.datadosens.index', compact('title', 'data', 'active', 'subActive'));
     }
@@ -32,7 +32,7 @@ class datadosensController extends Controller
         $active = 'datadosens';
         $subActive = 'datadosens';
         $titleModal = 'Delete ' . $title;
-        $text = "Are you sure you want to delete?";
+        $text = "Apakah anda yakin untuk di hapus?";
         confirmDelete($titleModal, $text);
         return view('pages.datadosens.detail', compact('title', 'data', 'active', 'subActive'));
     }
@@ -42,7 +42,7 @@ class datadosensController extends Controller
      */
     public function create()
     {
-        $title = 'Add Data Dosen';
+        $title = 'Tambah Data Dosen';
         $active = 'datadosens';
         $subActive = 'datadosens';
         return view('pages.datadosens.create', compact('title', 'active', 'subActive'));
@@ -61,14 +61,14 @@ class datadosensController extends Controller
 
         $credential['role'] = 'dosen';
         user::create($credential);
-        return redirect('/dashboard/datadosens')->with('success', 'data dosen created successfully');
+        return redirect('/dashboard/datadosens')->with('success', 'data dosen Berhasil Dibuat');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Edit Data MBKM';
+        $title = 'Ubah Data MBKM';
         $data = user::find($id);
         $active = 'datadosens';
         $subActive = 'datadosens';
@@ -89,7 +89,7 @@ class datadosensController extends Controller
         $dosen = user::find($id);
         $dosen->update($credential);
 
-        return redirect('/dashboard/datadosens')->with('success', 'Data dosen updated successfully');
+        return redirect('/dashboard/datadosens')->with('success', 'Data dosen Berhasil Diupdate');
     }
 
     /**
@@ -99,6 +99,6 @@ class datadosensController extends Controller
     {
         $dosen = user::find($id);
         $dosen->delete();
-        return redirect('/dashboard/datadosens')->with('success', 'Data dosen deleted successfully');
+        return redirect('/dashboard/datadosens')->with('success', 'Data dosen Berhasil Didelete');
     }
 }

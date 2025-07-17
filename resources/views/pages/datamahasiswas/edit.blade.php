@@ -13,10 +13,10 @@
                     <input type="text" class="form-control" id="NIM" name="NIM" value="{{ $data->NIM }}">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>
@@ -26,15 +26,15 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">Kata Sandi</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                    <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
         </div>
     </div>
